@@ -1,7 +1,7 @@
 <?php
 
 	/**
-     * This File Contains Database Constants.
+     * This File Contains Database Class.
      * 
      * @author Arvin Kent Lazaga <arvinkent17@gmail.com>
      * @copyright Arvin Kent Lazaga December 23, 2013
