@@ -45,3 +45,7 @@ body {
 #submenu li > a:hover {
 	text-decoration: underline;
 }
+
+.cur_p {
+	cursor: pointer;
+}
