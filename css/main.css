@@ -37,3 +37,11 @@ body {
 #submenu {
 	list-style: none;
 }
+
+#submenu li > a {
+	text-decoration: none;
+}
+
+#submenu li > a:hover {
+	text-decoration: underline;
+}
