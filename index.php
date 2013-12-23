@@ -104,21 +104,6 @@
 		</div>
 		<!-- Welcome Panel Ends Here -->
 
-		<!-- Search Panel Starts Here -->
-		<div class="container">
-			<div id="searchbar" class="row">
-				<div class="well">
-					<div class="input-group col-lg-16">
-	 					<input type="text" class="form-control" placeholder="Search Product">
-	 					<span class="input-group-btn">
-	 						<button class="btn btn-primary">Search</button>
-	 					</span>
-					</div>	
-				</div>
-			</div>
-		</div>
-		<!-- Search Panel Ends Here -->
-
 		<!-- Footer Starts Here -->
 		<div class="navbar navbar-default navbar-fixed-bottom">
 			<div class="container">
