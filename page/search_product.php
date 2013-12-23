@@ -51,6 +51,12 @@
 		</div>
 		<!-- Navigation Ends Here -->
 
+		<div class="container">
+			<ul class="breadcrumb">
+				<li><a href="../index.php" title="Go back to Homepage">Home</a></li>
+				<li class="active cur_p" title="Current Page">Search Product</li>
+			</ul>
+		</div>
 		<!-- Footer Starts Here -->
 		<div class="navbar navbar-default navbar-fixed-bottom">
 			<div class="container">
