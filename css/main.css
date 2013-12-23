@@ -16,3 +16,23 @@ body {
 #pword {
 	margin-bottom: 10px;
 }
+
+#myCarousel {
+	margin-bottom: 12px;
+}
+
+.jumbotron {
+	margin-bottom: 15px;
+}
+
+#sitename {
+	margin-right: 15px;
+}
+
+#searchbar {
+	margin-bottom: 30px;
+}
+
+#submenu {
+	list-style: none;
+}
