@@ -27,14 +27,16 @@
 								<li>
 									<a>Categories</a>
 									<ul id="submenu" class="dropdown">
-										<li><a href="#">&rsaquo; Category 1</a></li>
-										<li><a href="#">&rsaquo; Category 2</a></li>
-										<li><a href="#">&rsaquo; Category 3</a></li>
-										<li><a href="#">&rsaquo; Category 4</a></li>
-										<li><a href="#">&rsaquo; Category 5</a></li>
+										<li><b>&rsaquo;</b> <a href="#">Category 1</a></li>
+										<li><b>&rsaquo;</b> <a href="#">Category 2</a></li>
+										<li><b>&rsaquo;</b> <a href="#">Category 3</a></li>
+										<li><b>&rsaquo;</b> <a href="#">Category 4</a></li>
+										<li><b>&rsaquo;</b> <a href="#">Category 5</a></li>
 									</ul>
 								</li>
-								 
+								<li>
+									<a href="#searchmodal" data-toggle="modal" class="dropdown-toggle">Search Product</a>
+								</li>
 							</ul>
 						</li>
 						<li><a href="#">About Us</a></li>
@@ -189,6 +191,32 @@
 			</div>
 		</div>
 		<!-- Login Modal Form End Here -->
+
+		<!-- Search Modal Form Starts Here -->
+		<div class="modal fade" id="searchmodal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form action="page/search_product.php" class="form-horizontal">
+						<div class="modal-header">
+							<h4>Search Product</h4>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<div class="col-lg-12">
+									<input type="text" class="form-control" placeholder="Search Product">
+								</div>
+								<br />
+								<center>
+									<button class="btn btn-primary" type="submit">Search</button>
+									<a class="btn btn-default" data-dismiss="modal">Cancel</a>
+								</center>
+							</div>	
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Search Modal Form End Here -->
 
 		<!-- Registration Modal Form Starts Here -->
 		<div class="modal fade" id="registrationmodal" role="dialog">
