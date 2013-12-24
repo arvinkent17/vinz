@@ -12,7 +12,7 @@
 		<!-- Navigation Starts Here -->
 		<div class="navbar navbar-inverse navbar-static-top">
 			<div class="container">
-				<a href="#" id="sitename" class="navbar-brand">E-Shop</a>
+				<a href="index.php" id="sitename" class="navbar-brand">E-Shop</a>
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -20,7 +20,7 @@
 				</button>
 				<div class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-left">
-						<li class="active"><a href="#">Home</a></li>
+						<li class="active"><a href="index.php">Home</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -40,7 +40,7 @@
 							</ul>
 						</li>
 						<li><a href="page/about-us.php">About Us</a></li>
-					 	<li><a href="#">Contact Us</a></li>
+					 	<li><a href="page/contact-us.php">Contact Us</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">	
 						<li><a href="#registrationmodal" data-toggle="modal">Sign Up</a></li>
@@ -95,7 +95,7 @@
 		<div class="container"> 
 			<div class="row">
 				<center>
-				<div class="jumbotron">
+				<div id="fix-bottom" class="jumbotron">
 					<h1>Welcome to E-Shopping Website</h1> 
 					<p>Lots of Awsome Stuff Here</p>
 					<a class="btn btn-info" href="#registrationmodal" data-toggle="modal">Sign Up</a>
@@ -105,12 +105,45 @@
 			</div>
 		</div>
 		<!-- Welcome Panel Ends Here -->
-
+		<div class="container">
+			<div class="row">
+					<div class="col-md-2">
+					<h4><img src="img/star-icon.png" class="responsive"> Products</h4>
+					<a href="#">Product1</a>
+					<br />
+					<a href="#">Product2</a>
+					<br />
+					<a href="#">Product3</a>
+					<br />
+					<a href="#">Product4</a>
+					</div>
+					<div class="col-md-2">
+						<h4><img src="img/about-icon.png" class="responsive"> About</h4>
+						<a href="#">Mission</a>
+						<br />
+						<a href="#">Vision</a>
+						<br />
+						<a href="#">Developers</a>					
+					</div>
+					<div class="col-md-2">
+						<h4><img src="img/setting-icon.png" class="responsive"> Support</h4>
+						<a href="#">Contact Us</a>
+						<br/>
+						<a href="#contact" data-toggle="modal">Send Us Feedback</a>		
+					</div>
+					<div class="col-md-2">
+						<h4><img src="img/legal-icon.png" class="responsive"> Legal</h4>
+						<a href="#">Terms of Use</a>
+						<br />				
+						<a href="#">Privacy Policy</a>
+					</div>
+				</div>
+		</div>
 		<!-- Footer Starts Here -->
 		<div class="navbar navbar-default navbar-fixed-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="navbar-text pull-left">&copy;Copyright 2013 <br /> Powered by Twitter Bootstrap 3.0 <br /> Site Built by Arvin Kent Lazaga</p>
+					<p class="navbar-text pull-left">&copy;Copyright 2013 <br /> Powered by Twitter Bootstrap 3.0 <br />Design and Built by Arvin Kent Lazaga</p>
 					<a href="#contact" data-toggle="modal" class="navbar-btn btn-danger btn btn pull-right">Send Us Feedback</a>
 				</div>
 			</div>
@@ -198,18 +231,19 @@
 				<div class="modal-content">
 					<form action="page/search-product.php" class="form-horizontal">
 						<div class="modal-header">
-							<h4>Search Product</h4>
+							<h4 id="search-title">Search Product<a class="nav-text pull-right close-mark" data-dismiss="modal">X</a></h4>
 						</div>
 						<div class="modal-body">
-							<div class="form-group">
-								<div class="col-lg-12">
-									<input type="text" class="form-control" placeholder="Search Product">
+							<div class="form-group pad-group">
+								<div class="input-group"> 
+									<span class="input-group-addon">
+										<img src="img/search-icon.png" height="20" class="responsive">
+									</span>
+									<input type="text" id="search-text" class="form-control" placeholder="Search Product">
+									<span class="input-group-btn">
+										<button class="btn btn-primary">Search</button>
+									</span>
 								</div>
-								<br />
-								<center>
-									<button class="btn btn-primary" type="submit">Search</button>
-									<a class="btn btn-default" data-dismiss="modal">Cancel</a>
-								</center>
 							</div>	
 						</div>
 					</form>

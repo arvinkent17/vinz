@@ -1,5 +1,5 @@
 body {
-	margin-bottom: 80px;
+	margin-bottom: 145px;
 }
 
 .page-header {
@@ -30,10 +30,6 @@ body {
 	margin-right: 15px;
 }
 
-#searchbar {
-	margin-bottom: 30px;
-}
-
 #submenu {
 	list-style: none;
 }
@@ -49,3 +45,30 @@ body {
 .cur_p {
 	cursor: pointer;
 }
+
+#p-foot {
+	height: 40px;
+}
+
+#about-header:hover {
+	text-decoration: none;
+}
+
+.about-desc {
+	text-indent: 20px;
+}
+
+.close-mark {
+	cursor: pointer;
+	font-weight: bold;
+}
+
+#search-title {
+	margin-top: 25px; 
+}
+
+.pad-group {
+	padding: 1em 1em;
+}
+
+ 

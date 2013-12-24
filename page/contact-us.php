@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Welcome to E-Shopping | The #1 Online Shopping Website daw</title>
+		<title>E-Shopping | Contact Us</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
 		<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
@@ -39,8 +39,8 @@
 								</li>
 							</ul>
 						</li>
-						<li><a href="#">About Us</a></li>
-					 	<li><a href="#">Contact Us</a></li>
+						<li><a href="about-us.php">About Us</a></li>
+					 	<li><a href="contact-us.php">Contact Us</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">	
 						<li><a href="#registrationmodal" data-toggle="modal">Sign Up</a></li>
@@ -51,17 +51,159 @@
 		</div>
 		<!-- Navigation Ends Here -->
 
+		<!-- Breadcrumb Starts Here --> 
 		<div class="container">
-			<ul class="breadcrumb">
+			<ul class="breadcrumb text-center">
 				<li><a href="../index.php" title="Go back to Homepage">Home</a></li>
-				<li class="active cur_p" title="Current Page">Search Product</li>
+				<li class="active cur_p" title="Current Page">Contact Us</li>
 			</ul>
 		</div>
+		<!-- Breadcrumb Ends Here -->
+
+		<!-- Article About Us Starts Here -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="panel-header">
+								<h3><a href="../index.php" id="about-header">E-Shopping Website </a>| Contact Details</h3>
+							</div>
+							<br /> 
+							<h4>Name: Arvin Kent Sahid Lazaga</h4>
+							<h4>Email: arvinkent17@gmail.com</h4>
+							<h4>Company Name: No Name Yet</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="list-group">
+						<div class="list-group-item">
+							<h4 class="list-group-item-heading">Total Registered User </h4>
+							<br />
+							<p>Currently there is no Registered User Yet</p>
+						</div>
+						<div class="list-group-item">
+							<h4 class="list-group-item-heading">Featured Products </h4>
+							<div id="myCarousel" class="carousel slide">
+					 			<ul class="carousel-indicators">
+					 			 	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					 			 	<li data-target="#myCarousel" data-slide-to="1"></li>
+					 			 	<li data-target="#myCarousel" data-slide-to="2"></li>
+					 			</ul>	
+					 			<div class="carousel-inner">
+					 				<div class="item active">
+					 			 		<img src="http://placehold.it/330x250" class="img-responsive">
+					 			 		<div class="carousel-caption">
+					 			 			 
+					 			 		</div>
+					 			 	</div>
+					 			 	<div class="item">
+					 			 		<img src="http://placehold.it/330x250" class="img-responsive">
+					 			 		<div class="carousel-caption">
+					 			 		</div>
+					 			 	</div>
+					 			 	<div class="item">
+					 			 		<img src="http://placehold.it/330x250" class="img-responsive">
+					 			 		<div class="carousel-caption">
+					 			 			 
+					 			 		</div>
+					 			 	</div>
+					 			 </div>	
+					 			<a class="carousel-control left" href="#myCarousel" data-slide="prev">
+					 				<span class="icon-prev"></span>
+					 			</a>
+					 			<a class="carousel-control right" href="#myCarousel" data-slide="next">
+					 			 	<span class="icon-next"></span>
+					 			</a>	
+				 			</div>		
+						</div>
+						<div class="list-group-item">
+							<h4 class="list-group-item-heading">Social Media </h4>
+							<br />
+							<table class="table-condensed" align="center">
+								<tbody>
+									<tr>
+										<td>
+											<a href="#"><img src="../img/facebook.png" class="img-responsive"></a>
+										</td>
+										<td>&nbsp;</td>
+										<td>
+											<a href="#"><img src="../img/googleplus.png" class="img-responsive"></a>
+										</td>
+										<td>&nbsp;</td>
+										<td>
+											<a href="#"><img src="../img/twitter.png" class="img-responsive"></a>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											 <b>Like Us</b>
+										</td>
+										<td>
+											&nbsp;
+										</td>
+										<td align="center">
+											 <b>+ Us</b>
+										</td>
+										<td>
+											&nbsp;
+										</td>
+										<td align="center">
+											 <b>Tweet Us</b>
+										</td>
+									</tr>
+								</tbody>
+							</table>						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Article Abous Us Ends Here -->
+
+		<!-- Sub Footer Starts Here -->
+		<div class="container">
+			<div class="row">
+					<div class="col-md-2">
+					<h4><img src="../img/star-icon.png" class="responsive"> Products</h4>
+					<a href="#">Product1</a>
+					<br />
+					<a href="#">Product2</a>
+					<br />
+					<a href="#">Product3</a>
+					<br />
+					<a href="#">Product4</a>
+					</div>
+					<div class="col-md-2">
+						<h4><img src="../img/about-icon.png" class="responsive"> About</h4>
+						<a href="#">Mission</a>
+						<br />
+						<a href="#">Vision</a>
+						<br />
+						<a href="#">Developers</a>					
+					</div>
+					<div class="col-md-2">
+						<h4><img src="../img/setting-icon.png" class="responsive"> Support</h4>
+						<a href="#">Contact Us</a>
+						<br/>
+						<a href="#contact" data-toggle="modal">Send Us Feedback</a>		
+					</div>
+					<div class="col-md-2">
+						<h4><img src="../img/legal-icon.png" class="responsive"> Legal</h4>
+						<a href="#">Terms of Use</a>
+						<br />				
+						<a href="#">Privacy Policy</a>
+					</div>
+				</div>
+		</div>
+		<!-- Sub Footer Ends Here -->
+
 		<!-- Footer Starts Here -->
 		<div class="navbar navbar-default navbar-fixed-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="navbar-text pull-left">&copy;Copyright 2013 <br /> Powered by Twitter Bootstrap 3.0 <br /> Site Built by Arvin Kent Lazaga</p>
+					<p class="navbar-text pull-left">&copy;Copyright 2013 <br /> Powered by Twitter Bootstrap 3.0 <br />Design and Built by Arvin Kent Lazaga</p>
 					<a href="#contact" data-toggle="modal" class="navbar-btn btn-danger btn btn pull-right">Send Us Feedback</a>
 				</div>
 			</div>
@@ -72,20 +214,21 @@
 		<div class="modal fade" id="searchmodal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="includes/pages/search_product.php" class="form-horizontal">
+					<form action="page/search-product.php" class="form-horizontal">
 						<div class="modal-header">
-							<h4>Search Product</h4>
+							<h4 id="search-title">Search Product<a class="nav-text pull-right close-mark" data-dismiss="modal">X</a></h4>
 						</div>
 						<div class="modal-body">
-							<div class="form-group">
-								<div class="col-lg-12">
-									<input type="text" class="form-control" placeholder="Search Product">
+							<div class="form-group pad-group">
+								<div class="input-group"> 
+									<span class="input-group-addon">
+										<img src="../img/search-icon.png" height="20" class="responsive">
+									</span>
+									<input type="text" id="search-text" class="form-control" placeholder="Search Product">
+									<span class="input-group-btn">
+										<button class="btn btn-primary">Search</button>
+									</span>
 								</div>
-								<br />
-								<center>
-									<button class="btn btn-primary" type="submit">Search</button>
-									<a class="btn btn-default" data-dismiss="modal">Cancel</a>
-								</center>
 							</div>	
 						</div>
 					</form>
