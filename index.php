@@ -39,7 +39,7 @@
 								</li>
 							</ul>
 						</li>
-						<li><a href="#">About Us</a></li>
+						<li><a href="page/about-us.php">About Us</a></li>
 					 	<li><a href="#">Contact Us</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">	
@@ -196,7 +196,7 @@
 		<div class="modal fade" id="searchmodal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="page/search_product.php" class="form-horizontal">
+					<form action="page/search-product.php" class="form-horizontal">
 						<div class="modal-header">
 							<h4>Search Product</h4>
 						</div>
