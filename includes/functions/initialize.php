@@ -23,10 +23,19 @@
 	/**
 	 * @global require_once load functions.php file  
 	 */
-	require_once(PATH2.DS."functions.php"); 
+	require_once(PATH2.DS."functions.php");
+	/**
+	 * @global require_once load admin-session.php file  
+	 */
+	require_once(PATH1.DS."admin-session.php");  
 	/**
 	 * @global require_once load database.php file  
 	 */
 	require_once(PATH1.DS."database.php"); 
+	/**
+	 * @global require_once load admin.php file  
+	 */
+	require_once(PATH1.DS."admin.php"); 
+
 
 ?>
