@@ -118,6 +118,44 @@
 					 			</a>	
 				 			</div>		
 						</div>
+						<div class="list-group-item">
+							<h4 class="list-group-item-heading">Social Media </h4>
+							<br />
+							<table class="table-condensed" align="center">
+								<tbody>
+									<tr>
+										<td>
+											<a href="#"><img src="../img/facebook.png" class="img-responsive"></a>
+										</td>
+										<td>&nbsp;</td>
+										<td>
+											<a href="#"><img src="../img/googleplus.png" class="img-responsive"></a>
+										</td>
+										<td>&nbsp;</td>
+										<td>
+											<a href="#"><img src="../img/twitter.png" class="img-responsive"></a>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											 <b>Like Us</b>
+										</td>
+										<td>
+											&nbsp;
+										</td>
+										<td align="center">
+											 <b>+ Us</b>
+										</td>
+										<td>
+											&nbsp;
+										</td>
+										<td align="center">
+											 <b>Tweet Us</b>
+										</td>
+									</tr>
+								</tbody>
+							</table>						
+						</div>
 					</div>
 				</div>
 			</div>
@@ -176,7 +214,7 @@
 		<div class="modal fade" id="searchmodal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="page/search-product.php" class="form-horizontal">
+					<form action="search-product.php" class="form-horizontal">
 						<div class="modal-header">
 							<h4 id="search-title">Search Product<a class="nav-text pull-right close-mark" data-dismiss="modal">X</a></h4>
 						</div>
