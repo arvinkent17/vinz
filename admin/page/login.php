@@ -47,16 +47,15 @@
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<div class="page-header">
-								<h3>Administrator List</h3>
-							</div>	
-							<div id="fix-bottom" class="jumbotron">
+								<div id="fix-top" class="jumbotron">
 								<h3>Welcome to Administrator Login Page</h3> 
 								<p>Note: Before Logging in to the System make sure that you are now in a private place</p>
 								<a class="btn btn-info" href="../../index.php">Back to Main Site</a>	
-								<div class="pull-right">
+								</div>
+							</div>	
+							<div class="pull-right">
 									<h4>By Administrator Arvin Kent</h4>
 								</div>
-							</div>
 						</div>
 					</div>
 				</div>
