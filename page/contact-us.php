@@ -214,7 +214,7 @@
 		<div class="modal fade" id="searchmodal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="page/search-product.php" class="form-horizontal">
+					<form action="search-product.php" class="form-horizontal">
 						<div class="modal-header">
 							<h4 id="search-title">Search Product<a class="nav-text pull-right close-mark" data-dismiss="modal">X</a></h4>
 						</div>
