@@ -11,7 +11,7 @@
 	/**
 	 * @global require_once Loads config.php File
 	 */
-	require_once(PATH1.DS."config.php");
+	require_once(PATH2.DS."config.php");
 
 	/**
 	 * Database Object Class
@@ -84,6 +84,90 @@
 		}
 
 		/**
+		 * Executes Any SQL Commands.
+		 *
+		 * @access public
+		 * @return result of SQL Command
+		 */
+		public function exe_query( $query = "" ) {
+			$result = mysql_query( $query );
+			$this->confirm_query( $result );
+			return $result;
+		}
+
+		/**
+		 * Checks SQL Commands.
+		 *
+		 * @access public
+		 * @throws error message if SQL Command is Invalid
+		 */
+		public function confirm_query( $result ) {
+			if ( !$result ) {
+				die( "Error SQL Command is Invalid <br />" . mysql_error() );
+			}
+		}
+
+		/**
+		 * Fetch a Row from Database Table.
+		 *
+		 * @access public
+		 * @return 1 row of a Database Table
+		 */
+		public function fetch_row( $result ) {
+			return mysql_fetch_array( $result );
+		}
+
+		/**
+		 * Counts number of Field Names in a Database Table.
+		 *
+		 * @access public
+		 * @return number of fields
+		 */
+		public function num_fields( $result ) {
+			return mysql_num_fields( $result );
+		}
+
+		/**
+		 * Lists Database Table Field Names. 
+		 *
+		 * @access public
+		 * @return field names
+		 */
+		public function field_names( $result , $offset ) {
+			return mysql_field_name( $result, $offset );
+		}
+
+		/**
+		 * Counts All Rows in a Database Table. 
+		 *
+		 * @access public
+		 * @return number of Rows
+		 */
+		public function num_rows( $result ) {
+			return mysql_num_rows( $result );
+		}
+
+		/**
+		 * Check a change or update of a Row in a Database Table. 
+		 *
+		 * @access public
+		 * @return boolean TRUE or FALSE
+		 */
+		public function data_change() {
+			return mysql_affected_rows( $this->connection );
+		} 
+
+		/**
+		 * Check if there was Inserted new ID to the Database Table.
+		 *
+		 * @access public
+		 * @return boolean TRUE or FALSE
+		 */
+		public function check_id() {
+			return mysql_insert_id( $this->connection );
+		}
+
+		/**
    		 * Closing Server Connection. 
    		 * 
    		 * @access public
@@ -96,5 +180,10 @@
 			}
 		}
 	}
+
+	/**
+	 * Instantiate the Database Object Class
+	 */
+	$db = new MysqlDatabase();
 
 ?>	
