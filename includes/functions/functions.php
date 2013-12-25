@@ -21,15 +21,33 @@
 	}
 
 	/**
-	 * Output Message.
+	 * Output Success Message.
 	 * 
 	 * @param string $message
 	 * @return string
 	 */
-	function output_message( $message = "" ) {
-		$output = "<div class=\"\">";
-		$output .= $message;
-		$output .= "</div>";
+	function output_messagev1( $message = "" ) {
+		$output = "";
+		$output .= "<div class=\"alert-message success\">";
+     	$output .= "<a class=\"close\" id=\"closex\">×</a>";
+     	$output .= "<h4 class=\"list-group-item-heading\">{$message}</h4>";
+     	$output .= "</div>";
+     	return $output;
+	}
+
+	/**
+	 * Output Error Message.
+	 * 
+	 * @param string $message
+	 * @return string
+	 */
+	function output_messagev2( $message = "" ) {
+		$output = "";
+		$output .= "<p class=\"alert-message error\">";
+     	$output .= "<a class=\"close\" id=\"closex\" >×</a>";
+     	$output .= "{$message}";
+     	$output .= "</p>";
+     	return $output;
 	}
 
 	/**
