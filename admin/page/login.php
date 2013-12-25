@@ -5,6 +5,29 @@
 	 */
 	require_once("../../includes/functions/initialize.php");
 
+	if( $admin_session->is_logged_in() ) { redirect_to("../index.php"); }
+	if( isset( $_POST['login'] ) ) {
+
+		$username = trim( $_POST['uname'] );
+		$password = trim( $_POST['pword'] );
+
+		$found_admin = $admin->authenticate( $username, $password );
+
+		if( $found_admin ) {
+			$admin_session->login( $found_admin );
+			redirect_to( "../index.php" );
+		} else {
+			$err_message = "incorrect username or password.";
+		}
+
+	} else {	
+		if( isset( $_GET['logout'] ) && $_GET['logout'] == 1) {
+			$message ="You are now Logged Out.";
+		}
+		$username = "";
+		$password = "";
+	}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,7 +62,10 @@
 			</div>
 		</div>
 		<!-- Footer Ends Here -->
-		
+		<div class="container">
+			<?php if(!empty( $message ) ) { echo output_messagev1( $message ); }?>
+		</div>
+
 		<!-- Admin Panel List -->
 		<div class="container">
 			<div class="row">
@@ -55,7 +81,7 @@
 							</div>	
 							<div class="pull-right">
 									<h4>By Administrator Arvin Kent</h4>
-								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -65,17 +91,21 @@
 						<div class="list-group-item">
 							<h3 class="list-group-item-heading">Administrator Login</h3>
 							<div id="groupitem" class="list-group-item-text">
-								<form class="form-horizontal" action="authenticate-login.php" method="post">
+								<form class="form-horizontal" method="post">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Username">
+										<input type="text" class="form-control" name="uname" value="<?php echo htmlentities($username); ?>" placeholder="Username">
 									</div>
 									<div class="form-group">
-										<input type="password" class="form-control" id="pword" placeholder="Password">
+										<input type="password" class="form-control" name="pword" id="pword" value="<?php echo htmlentities($password); ?>" placeholder="Password">
 										<div class="nav pull-right">
-											<button class="btn btn-primary" type="submit">Login</button>
+											<button class="btn btn-primary" name="login" type="submit">Login</button>
 										</div>
+									<div class="pull-left">
+									<?php if(!empty( $err_message ) ) { echo output_messagev2( $err_message ); } ?>
+								</div>
 									</div>
 								</form> 
+				
 							</div>
 						</div>
 						<div class="list-group-item">
