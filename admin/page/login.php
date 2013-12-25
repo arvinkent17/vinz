@@ -3,7 +3,7 @@
 	/**
 	 * @global require_once Calls File Directory Controller
 	 */
-	require_once("../../includes/functions/initialize.php");
+	require_once("../includes/functions/initialize.php");
 
 	if( $admin_session->is_logged_in() ) { redirect_to("../index.php"); }
 
@@ -79,7 +79,7 @@
 								<div id="fix-top" class="jumbotron">
 								<h3>Welcome to Administrator Login Page</h3> 
 								<p>Note: Before Logging in to the System make sure that you are now in a private place</p>
-								<a class="btn btn-info" href="../../index.php">Back to Main Site</a>	
+								<a class="btn btn-info" href="#confirm" data-toggle="modal">Back to Main Site</a>	
 								</div>
 							</div>	
 							<div class="pull-right">
@@ -96,10 +96,10 @@
 							<div id="groupitem" class="list-group-item-text">
 								<form class="form-horizontal" method="post">
 									<div class="form-group">
-										<input type="text" class="form-control" name="uname" value="<?php echo htmlentities($username); ?>" placeholder="Username">
+										<input type="text" class="form-control" name="uname" value="<?php echo htmlentities($username); ?>" placeholder="Username" required>
 									</div>
 									<div class="form-group">
-										<input type="password" class="form-control" name="pword" id="pword" value="<?php echo htmlentities($password); ?>" placeholder="Password">
+										<input type="password" class="form-control" name="pword" id="pword" value="<?php echo htmlentities($password); ?>" placeholder="Password" required>
 										<div class="nav pull-right">
 											<button class="btn btn-primary" name="login" type="submit">Login</button>
 										</div>
@@ -142,7 +142,25 @@
 				<!-- Login Form Ends Here -->
 			</div>	
 		</div>
-		<!-- Admin Panel List End -->		
+		<!-- Admin Panel List End -->
+
+		<div class="modal fade" id="confirm" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form class="form-horizontal">
+						<div class="modal-body">
+							<div class="modal-header">
+								<h3>Oops!</h3>
+							</div>
+							<center><h4>Are you sure you want to go back to Public Main Site?</h4>
+								<button class="btn btn-default" id="mainsite" type="button">Yes</button>
+								<a class="btn btn-default" data-dismiss="modal">No</a>
+							</center>					
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>		
 
 		<!-- load Javascript External Files here for Fast Load -->
 		<script src="../../js/lib/jquery-1.8.2.min.js"></script>

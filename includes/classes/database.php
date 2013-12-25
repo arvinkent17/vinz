@@ -11,7 +11,7 @@
 	/**
 	 * @global require_once Loads config.php File
 	 */
-	require_once(PATH2.DS."config.php");
+	require_once(PPATH2.DS."config.php");
 
 	/**
 	 * Database Object Class

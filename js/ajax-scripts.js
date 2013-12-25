@@ -9,7 +9,7 @@ $(function() {
 
 	// Notification Close Function.
 	$("#closex").on('click', function() {
-		$(".alert-message").fadeOut('slow');
+		$(".alert-message").fadeOut('fast');
 	});
 
 	// Carousel Auto Slide. 
@@ -17,7 +17,12 @@ $(function() {
 		interval: 3000,
 		pause: 'hover'
 	});
-		
+	
+	// Redirecting Admin to Public Site 
+	$("#mainsite").on('click', function() {
+		window.location.href = "../../index.php";
+	});
+
 })
 
 // Automatically Call Timeout for Data Update

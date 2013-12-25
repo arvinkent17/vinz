@@ -1,3 +1,11 @@
+<?php 
+	
+	/**
+	 * @global require_once Calls File Directory Controller
+	 */
+	require_once("../includes/functions/initialize.php");
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -274,3 +282,15 @@
 
 	</body>
 </html>
+<?php 
+
+	/**
+	 * Closes Connection if Connection was been Established.
+	 *
+	 * Calls Database Object Class Method close_connection 
+	 */
+    if( isset( $db ) ) { 
+    	$db->close_connection(); 
+    } 
+
+?>

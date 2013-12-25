@@ -3,7 +3,7 @@
 	/**
 	 * @global require_once Calls File Directory Controller
 	 */
-	require_once("../includes/functions/initialize.php");
+	require_once("includes/functions/initialize.php");
 
 	if( !$admin_session->is_logged_in() ) { redirect_to("page/login.php"); }
 

@@ -58,7 +58,7 @@
 	 */
 	function __autoload( $class_name ) {
 		$class_name = strtolower( $class_name );
-		$class_path = PATH1.DS."{$class_name}";
+		$class_path = PPATH1.DS."{$class_name}";
 		if ( file_exists( $filename ) ) {
 			require_once( $class_path );
 		} else {

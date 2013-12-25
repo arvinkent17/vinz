@@ -24,18 +24,12 @@
 		public $password;
 
 		/**
-		 * Admin Table Name
-		 *  
-		 * @access protected
-		 */
-
-		/**
 		 * Authenticate Admin Username and Password when Logging in
 		 *
-		 * @access protected
+		 * @access private
 		 * @return boolean TRUE or False
 		 */
-		public function find_all() {
+		private function find_all() {
 			return $this->find_by_sql( "SELECT * FROM tbl_admin" );
 		}
 
