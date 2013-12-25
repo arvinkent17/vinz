@@ -6,6 +6,7 @@
 	require_once("../../includes/functions/initialize.php");
 
 	if( $admin_session->is_logged_in() ) { redirect_to("../index.php"); }
+
 	if( isset( $_POST['login'] ) ) {
 
 		$username = trim( $_POST['uname'] );
@@ -21,9 +22,11 @@
 		}
 
 	} else {	
+
 		if( isset( $_GET['logout'] ) && $_GET['logout'] == 1) {
 			$message ="You are now Logged Out.";
 		}
+		
 		$username = "";
 		$password = "";
 	}
@@ -33,7 +36,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Welcome to E-Shopping | The #1 Online Shopping Website daw</title>
+		<title>Administrator Login Page</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="author" content="Arvin Kent Lazaga">
 		<!-- Twitter Bootstrap External CSS Files -->
@@ -54,10 +57,10 @@
 
 
 		<!-- Footer Starts Here -->
-		<div class="navbar navbar-default navbar-fixed-bottom">
+		<div class="navbar navbar-default navbar-fixed-bottom foot-bg">
 			<div class="container">
 				<div class="row">
-					<p class="navbar-text pull-left">&copy;Copyright 2013 <br /> Powered by Twitter Bootstrap 3.0 <br />Design and Built by Arvin Kent Lazaga</p>
+					<p id="text-white" class="navbar-text pull-left">&copy;Copyright 2013 <br /> Powered by Twitter Bootstrap 3.0 <br />Design and Built by Arvin Kent Lazaga</p>
 				</div>
 			</div>
 		</div>

@@ -16,8 +16,6 @@
 	/**
 	 * Database Object Class
 	 *
-	 * @package MysqlDatabase
-	 * @subpackage User
 	 */
 	class MysqlDatabase {
 		

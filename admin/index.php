@@ -12,8 +12,9 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Welcome to E-Shopping | The #1 Online Shopping Website daw</title>
+		<title>Welcome to E-Shopping | Administartor Page</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Arvin Kent Lazaga">
 		<!-- Twitter Bootstrap External CSS Files -->
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
 		<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
@@ -72,9 +73,11 @@
 		<!-- Navigation Ends Here -->
 
 		<!-- Footer Starts Here -->
-		<div class="navbar navbar-default navbar-fixed-bottom">
+		<div class="navbar navbar-default navbar-fixed-bottom foot-bg">
 			<div class="container">
-				<p class="navbar-text pull-left">&copy;Copyright 2013 <br /> Powered by Twitter Bootstrap 3.0 <br /> Site Built by Arvin Kent Lazaga</p>
+				<div class="row">
+					<p id="text-white" class="navbar-text pull-left">&copy;Copyright 2013 <br /> Powered by Twitter Bootstrap 3.0 <br />Design and Built by Arvin Kent Lazaga</p>
+				</div>
 			</div>
 		</div>
 		<!-- Footer Ends Here -->
@@ -101,3 +104,15 @@
 
 	</body>
 </html>
+<?php 
+
+	/**
+	 * Closes Connection if Connection was been Established.
+	 *
+	 * Calls Database Object Class Method close_connection 
+	 */
+    if( isset( $db ) ) { 
+    	$db->close_connection(); 
+    } 
+
+?>

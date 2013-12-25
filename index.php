@@ -4,6 +4,7 @@
 		<meta charset="utf-8" />
 		<title>Welcome to E-Shopping | The #1 Online Shopping Website daw</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Arvin Kent Lazaga">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/main.css">
@@ -93,7 +94,7 @@
 	
 		<!-- Welcome Panel Starts Here -->
 		<center>
-			<div id="fix-bottom" class="jumbotron">
+			<div class="jumbotron">
 				<h1>Welcome to E-Shopping Website</h1> 
 				<p>Lots of Awsome Stuff Here</p>
 				<a class="btn btn-info" href="#registrationmodal" data-toggle="modal">Sign Up</a>
@@ -311,16 +312,6 @@
 		<script src="js/lib/jquery-1.8.2.min.js"></script>
 		<script src="js/lib/bootstrap.min.js"></script>
 		<script src="js/ajax-scripts.js"></script>
-		<script>
-
-			$(document).ready(function(){
-				$('#myCarousel').carousel({
-					interval: 3000,
-					pause: 'hover'
-				});
-			});
-
-		</script>
 
 	</body>
 </html>

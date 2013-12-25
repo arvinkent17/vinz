@@ -4,6 +4,7 @@
 		<meta charset="utf-8" />
 		<title>E-Shopping | About Us</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Arvin Kent Lazaga">
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
 		<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="../css/main.css">
@@ -374,16 +375,6 @@
 		<script src="../js/lib/jquery-1.8.2.min.js"></script>
 		<script src="../js/lib/bootstrap.min.js"></script>
 		<script src="../js/ajax-scripts.js"></script>
-		<script>
-
-			$(document).ready(function(){
-				$('#myCarousel').carousel({
-					interval: 3000,
-					pause: 'hover'
-				});
-			});
-
-		</script>
 
 	</body>
 </html>

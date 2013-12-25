@@ -7,10 +7,17 @@
 $(function() {
 	init();
 
+	// Notification Close Function.
 	$("#closex").on('click', function() {
 		$(".alert-message").fadeOut('slow');
 	});
 
+	// Carousel Auto Slide. 
+	$('#myCarousel').carousel({
+		interval: 3000,
+		pause: 'hover'
+	});
+		
 })
 
 // Automatically Call Timeout for Data Update
@@ -19,6 +26,7 @@ function init() {
 	auto_update();
 	init();	
 	}, 200);
+	
 }
 
 // Retrieve Data from Database using JSON
