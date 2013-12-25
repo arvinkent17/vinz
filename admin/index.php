@@ -1,3 +1,13 @@
+<?php 
+	
+	/**
+	 * @global require_once Calls File Directory Controller
+	 */
+	require_once("../includes/functions/initialize.php");
+
+	if( !$admin_session->is_logged_in() ) { redirect_to("page/login.php"); }
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -50,9 +60,9 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">View Profile</a></li>
+								<li><a href=>View Profile</a></li>
 								<li><a href="#">Deactivate</a></li>
-								<li><a href="#">Logout</a></li>
+								<li><a href="page/logout.php">Logout</a></li>
 							</ul>
 						</li>
 					</ul>
