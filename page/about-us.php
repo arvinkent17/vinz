@@ -20,7 +20,7 @@
 				</button>
 				<div class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-left">
-						<li class="active"><a href="../index.php">Home</a></li>
+						<li><a href="../index.php">Home</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -39,7 +39,7 @@
 								</li>
 							</ul>
 						</li>
-						<li><a href="about-us.php">About Us</a></li>
+						<li class="active"><a href="about-us.php">About Us</a></li>
 					 	<li><a href="contact-us.php">Contact Us</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">	
@@ -200,11 +200,11 @@
 		<!-- Sub Footer Ends Here -->
 
 		<!-- Footer Starts Here -->
-		<div class="navbar navbar-default navbar-fixed-bottom">
+		<div class="navbar navbar-default navbar-fixed-bottom foot-bg">
 			<div class="container">
 				<div class="row">
-					<p class="navbar-text pull-left">&copy;Copyright 2013 <br /> Powered by Twitter Bootstrap 3.0 <br />Design and Built by Arvin Kent Lazaga</p>
-					<a href="#contact" data-toggle="modal" class="navbar-btn btn-danger btn btn pull-right">Send Us Feedback</a>
+					<p id="text-white" class="navbar-text pull-left">&copy;Copyright 2013 <br /> Powered by Twitter Bootstrap 3.0 <br />Design and Built by Arvin Kent Lazaga</p>
+					<a id="feedbackbutt" href="#contact" data-toggle="modal" class="navbar-btn btn-danger btn btn pull-right">Send Us Feedback</a>
 				</div>
 			</div>
 		</div>

@@ -52,7 +52,7 @@
 		<!-- Navigation Ends Here -->
 
 		<!-- Carousel Image Slider Starts Here -->
-		<div class="container">
+		<div class="container2">
 			<div class="row">
 				<div id="myCarousel" class="carousel slide">
 		 			<ul class="carousel-indicators">
@@ -62,19 +62,19 @@
 		 			</ul>	
 		 			<div class="carousel-inner">
 		 				<div class="item active">
-		 			 		<img src="http://placehold.it/1250x330" class="img-responsive">
+		 			 		<img src="img/motivational-pic1.jpg" class="img-responsive">
 		 			 		<div class="carousel-caption">
 		 			 			 
 		 			 		</div>
 		 			 	</div>
 		 			 	<div class="item">
-		 			 		<img src="http://placehold.it/1250x330" class="img-responsive">
+		 			 		<img src="img/motivational-pic2.jpg" class="img-responsive">
 		 			 		<div class="carousel-caption">
 		 			 			 
 		 			 		</div>
 		 			 	</div>
 		 			 	<div class="item">
-		 			 		<img src="http://placehold.it/1250x330" class="img-responsive">
+		 			 		<img src="img/motivational-pic3.jpg" class="img-responsive">
 		 			 		<div class="carousel-caption">
 		 			 			 
 		 			 		</div>
@@ -92,18 +92,15 @@
 		<!-- Carousel Image Slider Ends Here -->
 	
 		<!-- Welcome Panel Starts Here -->
-		<div class="container"> 
-			<div class="row">
-				<center>
-				<div id="fix-bottom" class="jumbotron">
-					<h1>Welcome to E-Shopping Website</h1> 
-					<p>Lots of Awsome Stuff Here</p>
-					<a class="btn btn-info" href="#registrationmodal" data-toggle="modal">Sign Up</a>
-					<a class="btn btn-primary" href="#loginmodal" data-toggle="modal">Login</a>
-				</div>
-				</center>	
+		<center>
+			<div id="fix-bottom" class="jumbotron">
+				<h1>Welcome to E-Shopping Website</h1> 
+				<p>Lots of Awsome Stuff Here</p>
+				<a class="btn btn-info" href="#registrationmodal" data-toggle="modal">Sign Up</a>
+				<a class="btn btn-primary" href="#loginmodal" data-toggle="modal">Login</a>
 			</div>
-		</div>
+		</center>	
+		
 		<!-- Welcome Panel Ends Here -->
 		<div class="container">
 			<div class="row">
@@ -140,11 +137,11 @@
 				</div>
 		</div>
 		<!-- Footer Starts Here -->
-		<div class="navbar navbar-default navbar-fixed-bottom">
+		<div class="navbar navbar-default navbar-fixed-bottom foot-bg">
 			<div class="container">
 				<div class="row">
-					<p class="navbar-text pull-left">&copy;Copyright 2013 <br /> Powered by Twitter Bootstrap 3.0 <br />Design and Built by Arvin Kent Lazaga</p>
-					<a href="#contact" data-toggle="modal" class="navbar-btn btn-danger btn btn pull-right">Send Us Feedback</a>
+					<p id="text-white" class="navbar-text pull-left">&copy;Copyright 2013 <br /> Powered by Twitter Bootstrap 3.0 <br />Design and Built by Arvin Kent Lazaga</p>
+					<a id="feedbackbutt" href="#contact" data-toggle="modal" class="navbar-btn btn-danger btn btn pull-right">Send Us Feedback</a>
 				</div>
 			</div>
 		</div>
