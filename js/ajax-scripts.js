@@ -1,11 +1,16 @@
 /** 
  *	@author Arvin Kent Lazaga <arvinkent17@gmail.com> 
- *  This Javascript File Contains All AJAX Scripts for Manipulating Data 
+ *  This Javascript File Contains All AJAX Scripts for Manipulating Data and Other Functons 
  */
 
 // Initialize All Functions on DOM 
 $(function() {
 	init();
+
+	$("#closex").on('click', function() {
+		$(".alert-message").fadeOut('slow');
+	});
+
 })
 
 // Automatically Call Timeout for Data Update
@@ -28,3 +33,4 @@ function auto_update() {
 		$('h1').text('');
 	});
 }
+
