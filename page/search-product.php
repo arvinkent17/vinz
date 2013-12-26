@@ -44,12 +44,12 @@
 										<li><b>&rsaquo;</b> <a href="#">Category 5</a></li>
 									</ul>
 								</li>
-								<li>
+								<li class="active">
 									<a href="#searchmodal" data-toggle="modal" class="dropdown-toggle"><i class="fa fa-search fa-fw"></i> Search Product</a>
 								</li>
 							</ul>
 						</li>
-						<li class="active"><a href="about-us.php"><i class="fa fa-group fa-fw"></i> About Us</a></li>
+						<li><a href="about-us.php"><i class="fa fa-group fa-fw"></i> About Us</a></li>
 					 	<li><a href="contact-us.php"><i class="fa fa-phone fa-fw"></i> Contact Us</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">	
@@ -120,7 +120,7 @@
 		<div class="modal fade" id="searchmodal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="page/search-product.php" class="form-horizontal">
+					<form action="search-product.php" class="form-horizontal">
 						<div class="modal-header">
 							<h4 id="search-title">Search Product<a class="nav-text pull-right close-mark" data-dismiss="modal">X</a></h4>
 						</div>
@@ -149,7 +149,7 @@
 				<div class="modal-content">
 					<form class="form-horizontal">
 						<div class="modal-header">
-							<h4>Send Us Feedback</h4>
+							<h4>Send Us Feedback<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
@@ -174,7 +174,6 @@
 							</div>	
 						</div>
 						<div class="modal-footer">
-							<a class="btn btn-default" data-dismiss="modal">Close</a>
 							<button class="btn btn-primary" type="submit">Send</button>
 						</div>
 					</form>
@@ -189,7 +188,7 @@
 				<div class="modal-content">
 					<form class="form-horizontal">
 						<div class="modal-header">
-							<h4>Login Authentication</h4>
+							<h4>Login Authentication<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
@@ -224,7 +223,7 @@
 				<div class="modal-content">
 					<form class="form-horizontal">
 						<div class="modal-header">
-							<h4>Registration Form</h4>
+							<h4>Registration Form<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
 						<div class="modal-body">
 							<div class="form-group">

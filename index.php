@@ -163,7 +163,7 @@
 				<div class="modal-content">
 					<form class="form-horizontal">
 						<div class="modal-header">
-							<h4>Send Us Feedback</h4>
+							<h4>Send Us Feedback<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
@@ -188,7 +188,6 @@
 							</div>	
 						</div>
 						<div class="modal-footer">
-							<a class="btn btn-default" data-dismiss="modal">Close</a>
 							<button class="btn btn-primary" type="submit">Send</button>
 						</div>
 					</form>
@@ -203,7 +202,7 @@
 				<div class="modal-content">
 					<form class="form-horizontal">
 						<div class="modal-header">
-							<h4>Login Authentication</h4>
+							<h4>Login Authentication<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
@@ -238,7 +237,7 @@
 				<div class="modal-content">
 					<form action="page/search-product.php" class="form-horizontal">
 						<div class="modal-header">
-							<h4 id="search-title">Search Product<a class="nav-text pull-right close-mark" data-dismiss="modal">X</a></h4>
+							<h4 id="search-title">Search Product<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
 						<div class="modal-body">
 							<div class="form-group pad-group">
@@ -265,7 +264,7 @@
 				<div class="modal-content">
 					<form class="form-horizontal">
 						<div class="modal-header">
-							<h4>Registration Form</h4>
+							<h4>Registration Form<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
