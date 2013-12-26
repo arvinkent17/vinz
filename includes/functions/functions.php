@@ -72,7 +72,7 @@
 	 * @param string $template
 	 */
 	function include_temp( $template = "" ) {
-		include( PATH3.DS."{$template}" );
+		include( PPATH3.DS."{$template}" );
 	}
 
 ?>

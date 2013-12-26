@@ -15,6 +15,7 @@
 		<meta name="author" content="Arvin Kent Lazaga">
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
 		<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="../css/font-awesome.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="../css/main.css">
 	</head>
 	<body>
@@ -29,9 +30,9 @@
 				</button>
 				<div class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-left">
-						<li><a href="../index.php">Home</a></li>
+						<li><a href="../index.php"><i class="fa fa-home fa-fw"></i> Home</a></li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart fa-fw"></i> Products<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li>
 									<a>Categories</a>
@@ -44,16 +45,16 @@
 									</ul>
 								</li>
 								<li>
-									<a href="#searchmodal" data-toggle="modal" class="dropdown-toggle">Search Product</a>
+									<a href="#searchmodal" data-toggle="modal" class="dropdown-toggle"><i class="fa fa-search fa-fw"></i> Search Product</a>
 								</li>
 							</ul>
 						</li>
-						<li><a href="about-us.php">About Us</a></li>
-					 	<li class="active"><a href="contact-us.php">Contact Us</a></li>
+						<li><a href="about-us.php"><i class="fa fa-group fa-fw"></i> About Us</a></li>
+					 	<li class="active"><a href="contact-us.php"><i class="fa fa-phone fa-fw"></i> Contact Us</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">	
-						<li><a href="#registrationmodal" data-toggle="modal">Sign Up</a></li>
-						<li><a href="#loginmodal" data-toggle="modal" >Login</a></li>
+						<li><a href="#registrationmodal" data-toggle="modal">Sign Up <i class="fa fa-question-circle fa-fw"></i></a></li>
+						<li><a href="#loginmodal" data-toggle="modal" >Login <i class="fa fa-sign-in fa-fw"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -174,8 +175,8 @@
 		<!-- Sub Footer Starts Here -->
 		<div class="container">
 			<div class="row">
-					<div class="col-md-2">
-					<h4><img src="../img/star-icon.png" class="responsive"> Products</h4>
+				<div class="col-md-2">
+					<h4><i class="fa fa-shopping-cart fa-fw"></i> Products</h4>
 					<a href="#">Product1</a>
 					<br />
 					<a href="#">Product2</a>
@@ -183,28 +184,28 @@
 					<a href="#">Product3</a>
 					<br />
 					<a href="#">Product4</a>
-					</div>
-					<div class="col-md-2">
-						<h4><img src="../img/about-icon.png" class="responsive"> About</h4>
-						<a href="about-us.php">Mission</a>
-						<br />
-						<a href="about-us.php">Vision</a>
-						<br />
-						<a href="#">Developers</a>					
-					</div>
-					<div class="col-md-2">
-						<h4><img src="../img/setting-icon.png" class="responsive"> Support</h4>
-						<a href="contact-us.php">Contact Us</a>
-						<br/>
-						<a href="#contact" data-toggle="modal">Send Us Feedback</a>		
-					</div>
-					<div class="col-md-2">
-						<h4><img src="../img/legal-icon.png" class="responsive"> Legal</h4>
-						<a href="#">Terms of Use</a>
-						<br />				
-						<a href="#">Privacy Policy</a>
-					</div>
 				</div>
+				<div class="col-md-2">
+					<h4><i class="fa fa-group fa-fw"></i> About</h4>
+					<a href="#">Mission</a>
+					<br />
+					<a href="#">Vision</a>
+					<br />
+					<a href="#">Developers</a>					
+				</div>
+				<div class="col-md-2">
+					<h4><i class="fa fa-cogs fa-fw"></i> Support</h4>
+					<a href="#">Contact Us</a>
+					<br/>
+					<a href="#contact" data-toggle="modal">Send Us Feedback</a>		
+				</div>
+				<div class="col-md-2">
+					<h4><i class="fa fa-legal fa-fw"></i> Legal</h4>
+					<a href="#">Terms of Use</a>
+					<br />				
+					<a href="#">Privacy Policy</a>
+				</div>
+			</div>
 		</div>
 		<!-- Sub Footer Ends Here -->
 

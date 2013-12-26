@@ -78,7 +78,7 @@
 			}
 			$this->db_select = mysql_select_db(DB_NAME, $this->connection);
 			if( !$this->db_select ) {
-				die( "Error:Database not Found. <br />" . mysql_error() );
+				die( "Error: Database not Found. <br />" . mysql_error() );
 			}
 		}
 
