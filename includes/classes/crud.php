@@ -5,8 +5,8 @@
      * This is my Own MVC CRUD operations.
      *
      * @author Arvin Kent Lazaga <arvinkent17@gmail.com>
-     * @copyright Arvin Kent Lazaga December 23, 2013
-     * @since December 23, 2013
+     * @copyright Arvin Kent Lazaga December 26, 2013
+     * @since December 26, 2013
 	 */
 
 	/**
@@ -208,6 +208,9 @@
 		}
 	}
 
+	/**
+	 * Instantiate the Operation Object Class.
+	 */
 	$crud = new Operations();
 
 ?>
