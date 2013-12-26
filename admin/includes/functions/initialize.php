@@ -35,6 +35,10 @@
 	 */
 	require_once(PPATH1.DS."database.php"); 
 	/**
+	 * @global require_once load database.php file  
+	 */
+	require_once(PPATH1.DS."crud.php"); 
+	/**
 	 * @global require_once load admin.php file  
 	 */
 	require_once(APATH1.DS."admin.php"); 

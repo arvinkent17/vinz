@@ -54,6 +54,7 @@
 		public function login( $admin ) {
 			if( $admin ) {
 				$this->admin_id = $_SESSION['admin_id'] = $admin->id;
+				$this->admin_id = $_SESSION['username'] = $admin->username;
 				$this->logged_in = true;
 			}
 		}

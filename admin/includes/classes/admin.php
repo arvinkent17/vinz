@@ -23,7 +23,7 @@
 		public $username;
 		public $password;
 
-		private function find_all() {
+		public function find_all() {
 			return $this->find_by_sql( "SELECT * FROM tbl_admin" );
 		}
 

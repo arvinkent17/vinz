@@ -28,5 +28,10 @@
 	 * @global require_once load database.php file  
 	 */
 	require_once(PPATH1.DS."database.php"); 
+	/**
+	 * @global require_once load database.php file  
+	 */
+	require_once(PPATH1.DS."crud.php");
+
 
 ?>
