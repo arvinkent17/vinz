@@ -116,6 +116,12 @@
 			return mysql_fetch_array( $result );
 		}
 
+		public function fetch_rows( $result ) {
+			while( $row = $this->fetch_row( $result ) ) {
+				
+			}
+		}
+
 		/**
 		 * Counts number of Field Names in a Database Table.
 		 *
