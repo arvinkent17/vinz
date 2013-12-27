@@ -21,6 +21,7 @@
 	defined("APATH3") ? NULL : define("APATH3", SITE_ROOT.DS."admin".DS."includes".DS."layouts");
 	defined("PPATH1") ? NULL : define("PPATH1", SITE_ROOT.DS."includes".DS."classes");
 	defined("PPATH2") ? NULL : define("PPATH2", SITE_ROOT.DS."includes".DS."functions");
+	defined("UPATH1") ? NULL : define("UPATH1", SITE_ROOT.DS."user".DS."includes".DS."classes");
 
 	/**
 	 * @global require_once load functions.php file  
@@ -46,6 +47,15 @@
 	 * @global require_once load admin.php file  
 	 */
 	require_once(APATH1.DS."admin.php"); 
+	/**
+	 * @global require_once load users.php file  
+	 */
+	require_once(UPATH1.DS."user.php"); 
+	/**
+	 * @global require_once load products.php file  
+	 */
+	require_once(APATH1.DS."products.php"); 
+
 
 
 ?>
