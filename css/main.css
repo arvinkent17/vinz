@@ -113,6 +113,18 @@ body {
 }
 .container2:after{clear:both}
 
+#pagelist1 {
+  margin-top: 10px;
+}
+
+#statis {
+  height: 65px;
+}
+
+#statishead {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 /*-- This is Actually not mine but I just modified it --*/
 /*-- I just Downloaded it from http://cssdeck.com/labs/twitter-bootstrap-alerts-and-notifications --*/
 .alerts {
