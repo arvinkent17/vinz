@@ -82,7 +82,150 @@
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<div class="page-header">
-								<h3>Current Admins</h3>
+								<h3>Statistics</h3>
+							</div>
+							<div class="col-lg-12">
+							<h4>Registered Users</h4>
+								<div class="well">
+									<div class="table-responsive">
+									<table class="table table-striped">
+										<thead>
+											<th>#</th>
+											<th>Firstname</th>
+											<th>Middlename</th>
+											<th>Lastname</th>
+											<th>Email</th>
+											<th>Address</th>
+											<th>Contact No</th>
+										</thead>
+										<tbody>
+										<td colspan="7">
+										<?php
+
+											$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
+
+							          		$per_page = 5;
+
+          									$total_count = $paginate->count_all( "tbl_userinfo" );
+
+          									$message1 = "Sorry. There is currently no records yet in your Users Lists.";
+
+          									$paginate->pagination_read( "tbl_userinfo", $page, $per_page, $total_count, $message1 );
+          								
+          								?>
+          								</td>
+										</tbody>
+									</table>
+									</div>
+									<div class="pull-left">
+									<?php
+
+										$pagelinks = $paginate->pagination_links();
+
+										echo $pagelinks;
+										
+									?>
+									</div>
+									<div class="pull-right">
+									<?php 
+
+										if( $paginate->total_pages() != 0 ) {
+
+											$pagelist = $paginate->page_list();
+
+											echo $pagelist;
+
+										}
+							
+									?>
+									</div>
+								</div>
+							<h4>Products</h4>	
+							<div class="well">
+									<div class="table-responsive">
+									<table class="table table-striped">
+										<thead>
+											<th>#</th>
+											<th>Product Name</th>
+											<th>Description</th>
+											<th>Price</th>
+											<th>Quantity</th>
+											<th>Supplier</th>
+											<th>Image</th>
+										</thead>
+										<tbody>
+										<td colspan="7">
+											<?php
+
+												$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
+
+											    $per_page = 5;
+
+				          						$total_count = $paginate->count_all( "tbl_products" );
+
+				          						$message2 = "Sorry. There is currently no records yet in your Database.";
+
+				          						$paginate->pagination_read( "tbl_products", $page, $per_page, $total_count, $message2 );
+		          								
+		          							?>
+		          						</td>
+										</tbody>				
+									</table>
+									</div>
+									<div class="pull-left">
+									<?php
+
+										$pagelinks = $paginate->pagination_links();
+
+										echo $pagelinks;
+										
+									?>
+									</div>
+									<div class="pull-right">
+									<?php 
+
+										if( $paginate->total_pages() != 0 ) {
+
+											$pagelist = $paginate->page_list();
+
+											echo $pagelist;
+
+										}
+							
+									?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="list-group">
+						<div class="list-group-item">
+							<h4  id="statishead" class="list-group-item-heading">Account Statistics</h4>
+							<div id="statis" class="well">
+								<div class="pull-left">
+									<h5><i class="fa fa-group fa-fw"></i> <strong>Users : <?php echo $user->count(); ?></strong></h5>	
+								</div>
+								<div class="pull-right">
+									<h5><i class="fa fa-user fa-fw"></i> <strong>Admins : <?php echo $admin->count(); ?></strong></h5>	
+								</div>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<h4  id="statishead" class="list-group-item-heading">Sales Statistics</h4>
+							<div id="statis" class="well">
+								<div class="pull-left">
+									<h5><i class="fa fa-shopping-cart fa-fw"></i> <strong>Products Sold : <?php echo $products->count(); ?></strong></h5>	
+								</div>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<h4  id="statishead" class="list-group-item-heading">Stocks</h4>
+							<div id="statis" class="well">
+								<div class="pull-left">
+									<h5><i class="fa fa-shopping-cart fa-fw"></i> <strong></strong></h5>	
+								</div>
 							</div>
 						</div>
 					</div>
@@ -94,6 +237,7 @@
 		<!-- load Javascript External Files here for Fast Load -->
 		<script src="../js/lib/jquery-1.8.2.min.js"></script>
 		<script src="../js/lib/bootstrap.min.js"></script>
+		<script src="../js/ajax-scripts.js"></script>
 
 	</body>
 </html>
