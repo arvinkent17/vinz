@@ -31,19 +31,19 @@
 		 * @param integer $page, $per_page, $total_count
 		 * @access public
 		 */
-		public function pagination_read( $tablename = "" , $page = 1, $per_page = 20, $total_count = 0 ) {
+		public function pagination_read( $tablename = "" , $page = 1, $per_page = 20, $total_count = 0 , $message = "") {
 			global $db;
 
-			$db->current_page = (int)$page;
-			$db->per_page = (int)$per_page;
-			$db->total_count = (int)$total_count;
+			$this->current_page = (int)$page;
+			$this->per_page = (int)$per_page;
+			$this->total_count = (int)$total_count;
 
 			$query = "SELECT * FROM {$tablename} ";
 			$query .= "LIMIT {$per_page} ";
 			$query .= "OFFSET " . $this->offset();
 			$result = $db->exe_query( $query );
-			$db->retrieve_rows( $result );
-
+			$db->retrieve_rows( $result, $message );
+			 
 		}
 
 		/**
@@ -55,26 +55,33 @@
 		public function pagination_links() {
 			
 			$output = "";
+			
+			if( $this->total_pages() > 1 ) {	
 
-			if( $this->total_pages() > 1 ) {
-								
 				if( $this->has_previous_page() ) {
-					$output = " <a href=\"index.php?page=";
+					$output = " <li><a class=\"\" href=\"index.php?page=";
 					$output .=  $this->previous_page();
-					$output .=  "\">Previous &laquo;</a> ";
+					$output .=  "\"><i class=\"fa fa-arrow-left fa-fw\"></i> Previous</a></li> ";
 				}
-
+				
+				
 				for( $i = 1; $i <= $this->total_pages(); ++$i ) {
-					$output .= " <a href=\"index.php?page={$i}\">{$i}</a> ";
+					
+					if( $i == $this->current_page ) {
+						$output .= "<li class=\"active\"><a href=\"index.php?page={$i}\" >{$i}</a></li> ";
+						
+					} else {
+						$output .= " <li><a href=\"index.php?page={$i}\">{$i} </a></li> ";
+					}
+
 				}
-
-
 					
 				if( $this->has_next_page() ) {
-					$output .=  " <a href=\"index.php?page=";
+					$output .=  " <li><a class=\"\" href=\"index.php?page=";
 					$output .=  $this->next_page();
-					$output .= "\">Next &raquo;</a> ";
+					$output .= "\">Next <i class=\"fa fa-arrow-right fa-fw\"></i></a></li> ";
 				}
+
 				return $output;
 
 			}
@@ -92,6 +99,20 @@
 
 		}
 
+		public function page_list() {
+
+			$output = "";
+			$cur_page = $this->current_page;
+			$tot_page = $this->total_pages();
+
+			if( $cur_page <= $tot_page ) {
+				$output .= "<h3>Page {$cur_page} of " ;
+				$output .= "{$tot_page}</h3>";	
+			}
+			
+			return $output;
+
+		}
 		/**
 		 * Count Total Pages.
 		 *
@@ -100,7 +121,7 @@
 		 */
 		public function total_pages() {
 
-			return ceil( $this->total_count/$this->per_page );
+			return ceil( $this->total_count / $this->per_page );
 
 		}
 
@@ -172,7 +193,7 @@
 		 * @access public
 		 */
 		public function count_all( $tablename = "" ) {
-
+			global $db;
 			$query = "SELECT COUNT(*) FROM " . $tablename;
 			$result = $db->exe_query( $query );
 			$row = $db->fetch_row( $result );
