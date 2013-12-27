@@ -32,6 +32,13 @@
 			return !empty( $result ) ? array_shift( $result ) : false;
 		}
 
+		public function count() {
+			global $db;
+			$result =  $db->exe_query( "SELECT * FROM tbl_admin" );
+			$count = $db->num_rows( $result );
+			return $count;
+		}
+
 		 /**
           * Authenticate Admin Username and Password when Logging in.
           *
