@@ -139,7 +139,7 @@
 		 * @access public
 		 * @return rows of a Database Table
 		 */
-		public function retrieve_rows( $result, $message = "" ) {
+		public function retrieve_rows( $result, $message = "", $rows = 0 ) {
 			
 			$output = "";
 
@@ -147,9 +147,9 @@
 
 			if( $this->num_rows( $result ) == 0 ) {
 
-				echo "<div class=\"alert-message error\">";
+				echo "<td align=center colspan={$rows}><div class=\"alert-message error\">";
 				echo "<h4>{$message}</h4>";
-				echo "</div>";
+				echo "</div></td>";
 
 			} else {
 

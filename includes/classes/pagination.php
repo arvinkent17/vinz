@@ -31,19 +31,51 @@
 		 * @param integer $page, $per_page, $total_count
 		 * @access public
 		 */
-		public function pagination_read( $tablename = "" , $page = 1, $per_page = 20, $total_count = 0 , $message = "") {
+		public function pagination_read( $classname, $rows = 0, $tablename = "" , $page = 1, $per_page = 20, $total_count = 0 , $message = "") {
+			
 			global $db;
+			global $admin;
+			global $user;
+			global $products;
 
 			$this->current_page = (int)$page;
 			$this->per_page = (int)$per_page;
 			$this->total_count = (int)$total_count;
 
-			$query = "SELECT * FROM {$tablename} ";
-			$query .= "LIMIT {$per_page} ";
-			$query .= "OFFSET " . $this->offset();
-			$result = $db->exe_query( $query );
-			$db->retrieve_rows( $result, $message );
-			 
+			if( $classname == $admin ) {
+
+				$query = "SELECT * FROM {$tablename} ";
+				$query .= "LIMIT {$per_page} ";
+				$query .= "OFFSET " . $this->offset();
+				$result = $db->exe_query( $query );
+				$admin->retrieve_admins( $result, $message, $rows );
+
+			} elseif( $classname == $user ) {
+
+				$query = "SELECT * FROM {$tablename} ";
+				$query .= "LIMIT {$per_page} ";
+				$query .= "OFFSET " . $this->offset();
+				$result = $db->exe_query( $query );
+				$db->retrieve_rows( $result, $message , $rows);
+
+			} elseif( $classname == $products) {
+
+				$query = "SELECT * FROM {$tablename} AS product ";
+				$query .="INNER JOIN tbl_stocks AS stocks ";
+			    $query .="ON(product.`product_id`=stocks.`product_id`) ";
+				$query .= "INNER JOIN tbl_supplier AS supplier ";
+				$query .= "ON(stocks.`supplier_id`=supplier.`supplier_id`)";
+				$query .= "LIMIT {$per_page} ";
+				$query .= "OFFSET " . $this->offset();
+ 				$result = $db->exe_query($query);
+ 				$products->retrieve_products( $result, $message, $rows );
+
+			} else {
+
+				$db->retrieve_rows( $result, $message, $rows );
+
+			}
+
 		}
 
 		/**
@@ -99,6 +131,12 @@
 
 		}
 
+		/**
+		 * Page List for Pagination.
+		 *
+		 * @access public
+		 * @return string output
+		 */
 		public function page_list() {
 
 			$output = "";
@@ -106,7 +144,7 @@
 			$tot_page = $this->total_pages();
 
 			if( $cur_page <= $tot_page ) {
-				$output .= "<h3>Page {$cur_page} of " ;
+				$output .= "<h3 class=\"pagelist\">Page {$cur_page} of " ;
 				$output .= "{$tot_page}</h3>";	
 			}
 			

@@ -125,6 +125,18 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+#statis2 {
+  height: 95px;
+}
+
+#tablewell {
+  margin-bottom: 10px;
+}
+
+.pagelist {
+  margin-top: 30px;
+}
 /*-- This is Actually not mine but I just modified it --*/
 /*-- I just Downloaded it from http://cssdeck.com/labs/twitter-bootstrap-alerts-and-notifications --*/
 .alerts {

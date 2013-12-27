@@ -15,10 +15,10 @@
 	class Admin {
 
 		/**
-		* Admin Object Variables.
-  		* 
-  		* @access public
-		*/
+		 * Admin Object Variables.
+  		 * 
+  		 * @access public
+		 */
 		public $id;
 		public $username;
 		public $password;
@@ -32,6 +32,12 @@
 			return !empty( $result ) ? array_shift( $result ) : false;
 		}
 
+		/**
+		 * Count Number of Admins.
+  		 * 
+  		 * @access public
+  		 * @return number of admins
+		 */
 		public function count() {
 			global $db;
 			$result =  $db->exe_query( "SELECT * FROM tbl_admin" );
@@ -57,6 +63,13 @@
 			return !empty( $result ) ? array_shift( $result ) : false;
 		} 
 
+		 /**
+          * Query any SQL Commands and Generates an Array of object variables.
+          *
+          * @access public
+          * @param string $sql
+          * @return array 
+          */
 		public function find_by_sql( $sql = "" ) {
 			global $db;
 			$result = $db->exe_query( $sql );
@@ -83,6 +96,52 @@
 			$object->password = $record['hashed_password'];
 			return $object;
 		}
+
+		/**
+		 * Retrieve Data from Table Admin
+		 *
+		 * 
+		 * @access public
+		 * @param string $result, string $message
+		 * @throws notification if empty result
+		 */
+		public function retrieve_admins( $result, $message = "" ) {
+			
+			$output = "";
+
+			global $paginate;
+			global $db;
+
+			if( $db->num_rows( $result ) == 0 ) {
+
+				echo "<td align=center colspan={$rows}><div class=\"alert-message error\">";
+				echo "<h4>{$message}</h4>";
+				echo "</div></td>";
+
+			} else {
+
+				$cnt = $paginate->offset() + 1;			
+
+				while ( $row = $db->fetch_row( $result ) ) {
+					$adminname = urlencode($row['adminname']);
+					echo "<tr>";
+					echo "<td>{$cnt}</td>";	
+					echo "<td>" . $row['adminname'] . "</td>";
+					echo "<td>" . $row['adminage'] . "</td>";
+					echo "<td>" . $row['admingender'] . "</td>";
+					echo "<td>" . $row['admincontact'] . "</td>";
+					echo "<td>
+							  <a class=\"nav-text\" href=\"operations/edit.php?id=" . urlencode($row["admin_id"]) . "&name={$adminname}" . "\">Edit</a>
+						      <a class=\"nav-text\" href=\"operations/delete.php?id=" . urlencode($row["admin_id"]) . "&name={$adminname}" . "\">Delete</a>
+						  </td>";
+						
+					echo "</tr>";
+					$cnt++;
+				}
+			}
+			
+		}
+
 	}
 
 	/**

@@ -3,7 +3,7 @@
 	/**
 	 * @global require_once Calls File Directory Controller
 	 */
-	require_once("includes/functions/initialize.php");
+	require_once("../includes/functions/initialize.php");
 
 	if( !$admin_session->is_logged_in() ) { redirect_to("page/login.php"); }
 
@@ -16,18 +16,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="author" content="Arvin Kent Lazaga">
 		<!-- Twitter Bootstrap External CSS Files -->
-		<link href="../css/bootstrap.min.css" rel="stylesheet">
-		<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
-		<link href="../css/font-awesome.min.css" rel="stylesheet">
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="../../css/font-awesome.min.css" rel="stylesheet">
 		<!-- Manual External CSS File -->
-		<link rel="stylesheet" href="../css/main.css">
+		<link rel="stylesheet" href="../../css/main.css">
 	</head>
 	<body>
 
 		<!-- Navigation Starts Here -->
 		<div class="navbar navbar-inverse navbar-static-top">
 			<div class="container">
-				<a href="index.php" id="sitename" class="navbar-brand">E-Shop</a>
+				<a href="../index.php" id="sitename" class="navbar-brand">E-Shop</a>
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -35,28 +35,27 @@
 				</button>
 				<div class="collapse navbar-collapse navHeaderCollapse">
 					<ul class="nav navbar-nav navbar-left">
-						<li class="active"><a href="#"><i class="fa fa-home fa-fw"></i> Home</a></li>
-						<li class="dropdown">
+						<li><a href="../index.php"><i class="fa fa-home fa-fw"></i> Home</a></li>
+						<li class="dropdown active">
 							<a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search fa-fw"></i> Search<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="#searchproductmodal" data-toggle="modal"><i class="fa fa-shopping-cart fa-fw"></i> Product</a></li>
 								<li><a href="#searchcustommodal" data-toggle="modal"><i class="fa fa-users fa-fw"></i> Customers</a></li>
 							</ul>
 						</li>
-						<li class="dropdown">
-							<a href="page/products.php"><i class="fa fa-shopping-cart fa-fw"></i> Products</b></a>
+						<li>
+							<a href="products.php"><i class="fa fa-shopping-cart fa-fw"></i> Products</b></a>
 						</li>
 						<li class="dropdown">
-							<a href="page/accounts.php"><l class="fa fa-users fa-fw"></i> Accounts</b></a>
-							
+							<a href="accounts.php"><l class="fa fa-users fa-fw"></i> Accounts</b></a>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <?php echo ucfirst($_SESSION['username']); ?> <i class="fa fa-cogs fa-fw"></i></a>
+							<a class="dropdown-toggle" data-toggle="dropdown">Admin <?php echo ucfirst($_SESSION['username']); ?> <i class="fa fa-cogs fa-fw"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href=>View Profile <i class="fa fa-user fa-fw"></i></a></li>
-								<li><a href="page/logout.php">Logout <i class="fa fa-sign-out fa-fw"></i></a></li>
+								<li><a href="logout.php">Logout <i class="fa fa-sign-out fa-fw"></i></a></li>
 							</ul>
 						</li>
 					</ul>
@@ -73,137 +72,16 @@
 				</div>
 			</div>
 		</div>
-		<!-- Footer Ends Here -->
 
-		<!-- Admin Panel List -->
+		<!-- Footer Ends Here -->
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-9">
-					<div class="panel panel-default">
-						<div class="panel-body">
-							<div class="page-header">
-								<h3>Statistics <img src="../img/statistic-icon.png" class="responsive">
-								</h3>
-							</div>
-							<div class="col-lg-12">
-							<h4>Registered Users</h4>
-								<div class="well">
-									<div class="table-responsive">
-									<table class="table table-striped">
-										<thead>
-											<th>#</th>
-											<th>Firstname</th>
-											<th>Middlename</th>
-											<th>Lastname</th>
-											<th>Email</th>
-											<th>Address</th>
-											<th>Contact No</th>
-										</thead>
-										<tbody>
-										<?php
-
-											$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
-
-							          		$per_page = 5;
-
-          									$total_count = $paginate->count_all( "tbl_userinfo" );
-
-          									$message1 = "Sorry. There is currently no records yet in your Users Lists.";
-
-          									$class1 = $user;
-
-          									$rows1 = 7;
-
-          									$paginate->pagination_read( $class1, $rows1, "tbl_userinfo", $page, $per_page, $total_count, $message1 );
-          								
-          								?>
-										</tbody>
-									</table>
-									</div>
-									<div class="pull-left">
-									<?php
-
-										$pagelinks = $paginate->pagination_links();
-
-										echo $pagelinks;
-										
-									?>
-									</div>
-									<div class="pull-right">
-									<?php 
-
-										if( $paginate->total_pages() != 0 && $paginate->has_next_page() == TRUE ) {
-
-											$pagelist = $paginate->page_list();
-
-											echo $pagelist;
-
-										}
-										
-									?>
-									</div>
-								</div>
-							<h4>Products</h4>	
-							<div class="well">
-									<div class="table-responsive">
-									<table class="table table-striped">
-										<thead>
-											<th>#</th>
-											<th>Product Name</th>
-											<th>Description</th>
-											<th>Price</th>
-											<th>Quantity</th>
-											<th>Supplier</th>
-											<th>Action</th>
-										</thead>
-										<tbody>
-										
-											<?php
-
-												$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
-
-											    $per_page = 5;
-
-				          						$total_count = $paginate->count_all( "tbl_products" );
-
-				          						$message2 = "Sorry. There is currently no records yet in your Database.";
-
-				          						$class2 = $products;
-
-				          						$rows2 = 7;
-
-				          						$paginate->pagination_read( $class2, $rows2, "tbl_products", $page, $per_page, $total_count, $message2 );
-		          								
-		          							?>
-		          						
-										</tbody>				
-									</table>
-									</div>
-									<div class="pull-left">
-									<?php
-
-										$pagelinks = $paginate->pagination_links();
-
-										echo $pagelinks;
-										
-									?>
-									</div>
-									<div class="pull-right">
-									<?php 
-
-										if( $paginate->total_pages() != 0 && $paginate->has_next_page() == TRUE ) {
-
-											$pagelist = $paginate->page_list();
-
-											echo $pagelist;
-
-										}
-							
-									?>
-									</div>
-								</div>
-							</div>
-						</div>
+					<div class="well">
+						<ul class="breadcrumb text-center">
+							<li><a href="../index.php" title="Go back to Homepage">Home</a></li>
+							<li class="active cur_p" title="Current Page">Search Product - Results</li>
+						</ul>
 					</div>
 				</div>
 				<div class="col-lg-3">
@@ -247,15 +125,15 @@
 						</div>
 					</div>
 				</div>
-			</div>		
+
+			</div>
 		</div>
-		<!-- Admin Panel List End -->	
 
 		<!-- Search Customer Modal Form Starts Here -->
 		<div class="modal fade" id="searchcustommodal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="page/search-customer.php" class="form-horizontal">
+					<form action="search-customer.php" class="form-horizontal">
 						<div class="modal-header">
 							<h4 id="search-title">Search Customer<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
@@ -282,7 +160,7 @@
 		<div class="modal fade" id="searchproductmodal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="page/search-product.php" class="form-horizontal">
+					<form action="search-product.php" class="form-horizontal">
 						<div class="modal-header">
 							<h4 id="search-title">Search Product<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
@@ -306,9 +184,9 @@
 		<!-- Search Product Modal Form End Here -->
 
 		<!-- load Javascript External Files here for Fast Load -->
-		<script src="../js/lib/jquery-1.8.2.min.js"></script>
-		<script src="../js/lib/bootstrap.min.js"></script>
-		<script src="../js/ajax-scripts.js"></script>
+		<script src="../../js/lib/jquery-1.8.2.min.js"></script>
+		<script src="../../js/lib/bootstrap.min.js"></script>
+		<script src="../../js/ajax-scripts.js"></script>
 
 	</body>
 </html>
