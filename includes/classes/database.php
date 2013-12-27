@@ -47,6 +47,8 @@
 		/**
 		 * User Input Cleaner to Avoid Problem.
 		 *
+		 * Prevents any unauthorized person to use sql injection
+		 *
 		 * @param string $value
 		 * @access public 
 		 * @return new cleaned input
@@ -116,10 +118,63 @@
 			return mysql_fetch_array( $result );
 		}
 
+		/**
+		 * Fetch Rows from Database Table.
+		 *
+		 * @access public
+		 * @return rows of a Database Table
+		 */
+
 		public function fetch_rows( $result ) {
 			while( $row = $this->fetch_row( $result ) ) {
 				
 			}
+		}
+
+		/**
+		 * Fetch Rows from Database Table.
+		 *
+		 * Output Rows into a table in HTML
+		 *
+		 * @access public
+		 * @return rows of a Database Table
+		 */
+		public function retrieve_rows( $result, $message = "" ) {
+			
+			$output = "";
+
+			global $paginate;
+
+			if( $this->num_rows( $result ) == 0 ) {
+
+				echo "<div class=\"alert-message error\">";
+				echo "<h4>{$message}</h4>";
+				echo "</div>";
+
+			} else {
+
+				$cnt = $paginate->offset() + 1;			
+
+				while ( $row = $this->fetch_row( $result ) ) {
+					
+					echo "<tr>";
+					echo "<td>{$cnt}</td>";
+
+					for( $index = 1; $index < $this->num_fields( $result ); ++$index ) {
+							
+						echo "<td align=\"left\">{$row[$index]}</td>";
+					}
+
+					echo "<td>
+							  <a href=\"operations/edit.php?stud_id=" . urlencode($row[0]) . "\">Edit</a>
+						      <a href=\"operations/delete.php?stud_id=" . urlencode($row[0]) . "\">Delete</a>
+						  </td>";
+						
+					echo "</tr>";
+					$cnt++;
+				}
+			}
+			
 		}
 
 		/**
