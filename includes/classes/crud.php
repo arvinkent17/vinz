@@ -73,6 +73,9 @@
 		 * @access public
 		 */
 		public function create( $tablename = "", $post_val ) {				
+			
+			global $db;
+
 			$arr = array();
 
 			foreach( $post_val as $key => $value ) {
@@ -117,6 +120,8 @@
 		 */
 		public function update( $tablename = "", $post_val, $id = 0 ) {
 			
+			global $db;
+
 			$arr = array();
 
 			foreach( $post_val as $key => $value ) {
@@ -175,7 +180,8 @@
 		 * @access public
 		 */
 		public function delete( $tablename = "" ) {
-			
+			global $db;
+
 			$query = "DELETE FROM " . $tablename;
 			$result = $db->exe_query( $query, $db->$connection );
 
@@ -192,6 +198,8 @@
 		 */
 		public function delete_by_id( $tablename = "", $id = 0 ) {
 
+			global $db;
+			
 			$countfields = "SELECT * FROM " . $tablename;
 			$result = $db->exe_query( $countfields, $db->connection );
 
