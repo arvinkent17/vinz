@@ -171,6 +171,15 @@ body {
   margin-bottom: 0;
 }
 
+#alertdanger2 {
+  padding: 0.7em 0.5em;
+  margin-bottom: 0;
+}
+
+#alertmessage1 {
+	padding-top: 10px;
+}
+
 #infosearch {
 	margin: 0;
 }
