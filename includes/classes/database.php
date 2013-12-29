@@ -147,7 +147,7 @@
 
 			if( $this->num_rows( $result ) == 0 ) {
 
-				echo "<td align=center colspan={$rows}><div class=\"alert-message error\">";
+				echo "<td align=center colspan={$rows}><div id=\"alertinfo\" class=\"alert alert-danger\">";
 				echo "<h4>{$message}</h4>";
 				echo "</div></td>";
 
