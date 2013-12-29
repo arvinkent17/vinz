@@ -37,7 +37,7 @@
 					<ul class="nav navbar-nav navbar-left">
 						<li class="active"><a href="#"><i class="fa fa-home fa-fw"></i> Home</a></li>
 						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search fa-fw"></i> Search<b class="caret"></b></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search fa-fw"></i> Search<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="#searchproductmodal" data-toggle="modal"><i class="fa fa-shopping-cart fa-fw"></i> Product</a></li>
 								<li><a href="#searchcustommodal" data-toggle="modal"><i class="fa fa-users fa-fw"></i> Customers</a></li>
@@ -69,13 +69,12 @@
 		<div class="navbar navbar-default navbar-fixed-bottom foot-bg">
 			<div class="container">
 				<div class="row">
-					<p id="text-white" class="navbar-text pull-left">&copy;Copyright 2013 <br /> Powered by Twitter Bootstrap 3.0 <br />Design and Built by Arvin Kent Lazaga</p>
+					<p id="text-white" class="navbar-text pull-left">&copy;Copyright 2013<br /> Powered by Twitter Bootstrap 3.0 <br />Design and Built by Arvin Kent Lazaga</p>
 				</div>
 			</div>
 		</div>
 		<!-- Footer Ends Here -->
 
-		<!-- Admin Panel List -->
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-9">
@@ -89,15 +88,15 @@
 							<h4>Registered Users</h4>
 								<div class="well">
 									<div class="table-responsive">
-									<table class="table table-striped">
+									<table class="table table-striped table-condensed table-bordered table-hover">
 										<thead>
 											<th>#</th>
-											<th>Firstname</th>
-											<th>Middlename</th>
-											<th>Lastname</th>
+											<th>Name</th>
 											<th>Email</th>
 											<th>Address</th>
 											<th>Contact No</th>
+											<th>Username</th>
+											<th>Action</th>
 										</thead>
 										<tbody>
 										<?php
@@ -112,9 +111,11 @@
 
           									$class1 = $user;
 
-          									$rows1 = 7;
+          									$rows1 = 8;
 
-          									$paginate->pagination_read( $class1, $rows1, "tbl_userinfo", $page, $per_page, $total_count, $message1 );
+          									$table1 =  "tbl_userinfo";
+
+          									$paginate->pagination_read( $class1, $rows1, $table1 , $page, $per_page, $total_count, $message1 );
           								
           								?>
 										</tbody>
@@ -146,7 +147,7 @@
 							<h4>Products</h4>	
 							<div class="well">
 									<div class="table-responsive">
-									<table class="table table-striped">
+									<table class="table table-striped table-condensed table-bordered table-hover">
 										<thead>
 											<th>#</th>
 											<th>Product Name</th>
@@ -172,7 +173,9 @@
 
 				          						$rows2 = 7;
 
-				          						$paginate->pagination_read( $class2, $rows2, "tbl_products", $page, $per_page, $total_count, $message2 );
+				          						$table2 = "tbl_products";
+
+				          						$paginate->pagination_read( $class2, $rows2, $table2, $page, $per_page, $total_count, $message2 );
 		          								
 		          							?>
 		          						
@@ -206,42 +209,75 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="col-lg-3">
 					<div class="list-group">
 						<div class="list-group-item">
-							<h4  id="statishead" class="list-group-item-heading"><i class="fa fa-users fa-fw"></i> Account Statistics</h4>
-							<div id="statis" class="well">
-								<div class="pull-left">
-									<h5><i class="fa fa-group fa-fw"></i> <strong>Users : <?php echo $user->count(); ?></strong></h5>	
+							<div id="panel1" class="panel panel-primary">
+								<div class="panel-heading">
+              					<h4 class="list-group-item-heading panel-title"><i class="fa fa-users fa-fw"></i> Account Statistics</h4>
+           			   			</div>
+           			   			<div class="panel-body">
+	             					<div class="row">
+	             					<div id="statis"  class="well">
+	             						<div class="pull-left">
+		             						<h5><i class="fa fa-group fa-fw"></i> <strong>Users : <?php echo $user->count(); ?></strong></h5>		
+		             					</div>
+										<div class="pull-right">
+											<h5><i class="fa fa-user fa-fw"></i> <strong>Admins : <?php echo $admin->count(); ?></strong></h5>	
+										</div>	
+									</div>
+									</div>
 								</div>
-								<div class="pull-right">
-									<h5><i class="fa fa-user fa-fw"></i> <strong>Admins : <?php echo $admin->count(); ?></strong></h5>	
+           					</div>				
+						</div>
+						<div class="list-group-item">
+							<div id="panel2" class="panel panel-primary">
+								<div class="panel-heading">
+									<h4 class="list-group-item-heading panel-title"><i class="fa fa-money fa-fw"></i> Sales Statistics</h4>
+								</div>
+								<div class="panel-body">
+									<div class="row">		
+										<div id="statis3" class="well">
+											<div class="pull-left">
+												<h5><i class="fa fa-shopping-cart fa-fw"></i> <strong>Products Sold : <?php echo $products->sold_products(); ?></strong></h5>	
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 						<div class="list-group-item">
-							<h4  id="statishead" class="list-group-item-heading"><i class="fa fa-money fa-fw"></i> Sales Statistics</h4>
-							<div id="statis" class="well">
-								<div class="pull-left">
-									<h5><i class="fa fa-shopping-cart fa-fw"></i> <strong>Products Sold : <?php echo $products->sold_products(); ?></strong></h5>	
+							<div id="panel3" class="panel panel-primary">
+								<div class="panel-heading">
+									<h4 class="list-group-item-heading panel-title"><i class="fa fa-truck fa-fw"></i> Stocks</h4>
+								</div>
+								<div class="panel-body">
+									<div class="row">		
+										<div id="statis2" class="well">
+											<div class="pull-left">
+												<h5><i class="fa fa-star fa-fw"></i> <strong>Total Stocks : <?php echo $products->count_stocks(); ?></strong> <br /><br /> <strong><i class="fa fa-minus-square  fa-fw"></i> Remaining Stocks : <?php echo $products->remaining_stocks(); ?></strong></h5>										
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 						<div class="list-group-item">
-							<h4  id="statishead" class="list-group-item-heading"><i class="fa fa-truck fa-fw"></i> Stocks</h4>
-							<div id="statis2" class="well">
-								<div class="pull-left">
-									<h5><i class="fa fa-star fa-fw"></i> <strong>Total Stocks : <?php echo $products->count_stocks(); ?></strong> <br /><br /> <strong><i class="fa fa-minus-square  fa-fw"></i> Remaining Stocks : <?php echo $products->remaining_stocks(); ?></strong></h5>										
+							<div id="panel4" class="panel panel-primary">
+								<div class="panel-heading">
+									<h4 class="list-group-item-heading panel-title"><i class="fa fa-mail-forward fa-fw"></i> Feedbacks</h4>
 								</div>
-							</div>
-						</div>
-						<div class="list-group-item">
-							<h4  id="statishead" class="list-group-item-heading"><i class="fa fa-mail-forward fa-fw"></i> Feedbacks</h4>
-							<div id="statis" class="well">
-								<div class="input-group"> 
-									<span class="input-group-btn">
-										<center><button class="btn btn-info">Read Mails</button></center>
-									</span>
+								<div class="panel-body">
+									<div class="row">		
+										<div id="statis" class="well">
+											<div class="input-group"> 
+												<span class="input-group-btn">
+													<center><button class="btn btn-info">Read Mails</button></center>
+												</span>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -249,13 +285,12 @@
 				</div>
 			</div>		
 		</div>
-		<!-- Admin Panel List End -->	
 
 		<!-- Search Customer Modal Form Starts Here -->
 		<div class="modal fade" id="searchcustommodal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="page/search-customer.php" class="form-horizontal">
+					<form action="page/search-customer.php" method="post" class="form-horizontal">
 						<div class="modal-header">
 							<h4 id="search-title">Search Customer<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
@@ -265,9 +300,9 @@
 									<span class="input-group-addon">
 										<img src="../img/search-icon.png" height="20" class="responsive">
 									</span>
-									<input type="text" id="search-text" class="form-control" placeholder="Search Customer" required>
+									<input type="text" id="search-text" name="searchcustom" class="form-control" placeholder="Search Customer" required>
 									<span class="input-group-btn">
-										<button class="btn btn-primary">Search</button>
+										<input type="submit" name="searchbutton" class="btn btn-primary" value="Search">
 									</span>
 								</div>
 							</div>	
@@ -282,7 +317,7 @@
 		<div class="modal fade" id="searchproductmodal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="page/search-product.php" class="form-horizontal">
+					<form action="page/search-product.php" method="post" class="form-horizontal">
 						<div class="modal-header">
 							<h4 id="search-title">Search Product<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
@@ -292,9 +327,9 @@
 									<span class="input-group-addon">
 										<img src="../img/search-icon.png" height="20" class="responsive">
 									</span>
-									<input type="text" id="search-text" class="form-control" placeholder="Search Product" required>
+									<input type="text" id="search-text" name="searchprod" class="form-control" placeholder="Search Product" required>
 									<span class="input-group-btn">
-										<button class="btn btn-primary">Search</button>
+										<input type="submit" name="searchbutton2" class="btn btn-primary" value="Search">
 									</span>
 								</div>
 							</div>	
