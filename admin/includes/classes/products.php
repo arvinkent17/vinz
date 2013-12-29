@@ -79,6 +79,44 @@
 					$productname = urlencode($row['product_name']);
 					echo "<tr valign=center>";
 					echo "<td>{$cnt}</td>";	
+					echo "<td>" . ucfirst($row['product_name']) . "</td>";
+					echo "<td>" . $row['desc'] . "</td>";
+					echo "<td><i class=\"fa fa-dollar fa-fw\"></i>" . $row['price'] . "</td>";
+					echo "<td>" . $row['quantity'] . "</td>";
+					echo "<td>" . ucfirst($row['supplier_name']) . "</td>";
+					echo "<td>
+							  <a class=\"nav-text\" href=\"operations/edit.php?id=" . urlencode($row["product_id"]) . "&product={$productname}" . "\">Edit</a>
+						      <a class=\"nav-text\" href=\"operations/delete.php?id=" . urlencode($row["product_id"]) . "&product={$productname}" . "\">Delete</a>
+						  </td>";
+						
+					echo "</tr>";
+					$cnt++;
+				}
+			}
+			
+		}
+
+		public function search_product( $result , $message = "" ) {
+
+			$output = "";
+
+			global $paginate;
+			global $db;
+
+			if( $db->num_rows( $result ) == 0 ) {
+
+				echo "<td align=center colspan={$rows}><div class=\"alert-message error\">";
+				echo "<h4>{$message}</h4>";
+				echo "</div></td>";
+
+			} else {
+
+				$cnt = $paginate->offset() + 1;			
+
+				while ( $row = $db->fetch_row( $result ) ) {
+					$productname = urlencode($row['product_name']);
+					echo "<tr valign=center>";
+					echo "<td>{$cnt}</td>";	
 					echo "<td>" . $row['product_name'] . "</td>";
 					echo "<td><textarea class=\"form-control\" rows=\"1\">" . $row['desc'] . "</textarea></td>";
 					echo "<td>" . $row['price'] . "</td>";
@@ -93,7 +131,6 @@
 					$cnt++;
 				}
 			}
-			
 		}
 	}
 
