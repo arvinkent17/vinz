@@ -3,8 +3,8 @@
      * This File Contains User Class.
      * 
      * @author Arvin Kent Lazaga <arvinkent17@gmail.com>
-     * @copyright Arvin Kent Lazaga December 26, 2013
-     * @since December 26, 2013
+     * @copyright Arvin Kent Lazaga December 27, 2013
+     * @since December 27, 2013
 	 */
 
 	/**
@@ -12,6 +12,69 @@
 	 * 
 	 */
 	class Users {
+		/**
+		 * Admin Object Variables.
+  		 * 
+  		 * @access public
+		 */
+		public $id;
+		public $username;
+		public $password;
+
+		/**
+          * Authenticate User's Username and Password when Logging in.
+          *
+          * @access public
+          * @return boolean TRUE or False
+          */
+		public function authenticate( $username = "", $password = "" ) {
+			global $db;
+
+			$username = $db->escape_value( $username );
+			$password = $db->escape_value( $password );
+			$hashed_password = sha1( $password );
+
+			$query = "SELECT * FROM tbl_users ";
+			$query .= "WHERE username = '{$username}' ";
+			$query .= "AND hashed_password = '{$hashed_password}' ";
+			$query .= "LIMIT 1";
+			$result = $this->find_by_sql( $query );
+			return !empty( $result ) ? array_shift( $result ) : false;
+		} 
+
+		/**
+          * Query any SQL Commands and Generates an Array of object variables.
+          *
+          * @access public
+          * @param string $sql
+          * @return array 
+          */
+		public function find_by_sql( $sql = "" ) {
+			global $db;
+			$result = $db->exe_query( $sql );
+			$object_array = array();
+			while( $row = $db->fetch_row( $result ) ) {
+				$object_array[] = $this->instantiate( $row );
+			}
+			return $object_array;
+		}
+
+		/**
+		 * Instantiate a new Object of it Self.
+		 *
+		 * Pass the array values of each inside of a object variables
+		 * 
+		 * @access private
+		 * @param array $record
+		 * @return new object  
+		 */
+		private function instantiate( $record ) {
+			$object = new self;
+			$object->id = $record['user_id'];
+			$object->username = $record['username'];
+			$object->password = $record['hashed_password'];
+			return $object;
+		}
 
 		/**
 		 * Counts Users.
@@ -30,89 +93,6 @@
 			return $count;
 		}
 
-		/**
-		 * Retrieve Data from Table User
-		 *
-		 * 
-		 * @access public
-		 * @param string $result, string $message
-		 * @throws notification if empty result
-		 */
-		public function retrieve_users( $result , $message = "" ) {
-
-			$output = "";
-
-			global $paginate;
-			global $db;
-
-			if( $db->num_rows( $result ) == 0 ) {
-
-				echo "<td align=center colspan={$rows}><div class=\"alert-message error\">";
-				echo "<h4>{$message}</h4>";
-				echo "</div></td>";
-
-			} else {
-
-				$cnt = $paginate->offset() + 1;			
-
-				while ( $row = $db->fetch_row( $result ) ) {
-					$name = urlencode($row['fname']);
-					echo "<tr valign=center>";
-					echo "<td>{$cnt}</td>";	
-					echo "<td>" . ucfirst($row['fname']) . " " . ucfirst($row['lname']) . " " . ucfirst($row['mname']) . "</td>";
-					echo "<td>" . $row['email'] . "</td>";
-					echo "<td>". $row['addr'] . "</td>";
-					echo "<td>0" . $row['contact_no'] . "</td>";
-					echo "<td>" . $row['username'] . "</td>";
-					echo "<td>
-							  <a class=\"nav-text\" href=\"operations/edit.php?id=" . urlencode($row["user_id"]) . "&name={$name}" . "\">Edit</a>
-						      <a class=\"nav-text\" href=\"operations/delete.php?id=" . urlencode($row["user_id"]) . "&name={$name}" . "\">Delete</a>
-						  </td>";
-						
-					echo "</tr>";
-					$cnt++;
-				}
-			}
-		}
-
-		public function search_user( $result , $message = "" ) {
-
-			$output = "";
-
-			global $paginate;
-			global $db;
-
-			if( $db->num_rows( $result ) == 0 ) {
-
-				echo "<td align=center colspan={$rows}><div class=\"alert-message error\">";
-				echo "<h4>{$message}</h4>";
-				echo "</div></td>";
-
-			} else {
-
-				$cnt = $paginate->offset() + 1;			
-
-				while ( $row = $db->fetch_row( $result ) ) {
-					$productname = urlencode($row['product_name']);
-					echo "<tr valign=center>";
-					echo "<td>{$cnt}</td>";	
-					echo "<td>" . $row['fname'] . "</td>";
-					echo "<td>" . $row['lname'] . "</td>";
-					echo "<td>" . $row['mname'] . "</td>";
-					echo "<td>" . $row['email'] . "</td>";
-					echo "<td>" . $row['addr'] . "</td>";
-					echo "<td>0" . $row['contact_no'] . "</td>";
-					echo "<td>0" . $row['username'] . "</td>";
-					echo "<td>
-							  <a class=\"nav-text\" href=\"operations/edit.php?id=" . urlencode($row["user_id"]) . "&name={$productname}" . "\">Edit</a>
-						      <a class=\"nav-text\" href=\"operations/delete.php?id=" . urlencode($row["user_id"]) . "&name={$productname}" . "\">Delete</a>
-						  </td>";
-						
-					echo "</tr>";
-					$cnt++;
-				}
-			}
-		}
 	}
 
 	/**
