@@ -56,6 +56,4 @@
 	 */
 	require_once(APATH1.DS."products.php"); 
 
-
-
 ?>
