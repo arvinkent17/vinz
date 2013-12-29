@@ -65,6 +65,7 @@
 			</div>
 		</div>
 		<!-- Footer Ends Here -->
+		
 		<div class="container">
 			<?php if(!empty( $message ) ) { echo output_messagev1( $message ); }?>
 		</div>
