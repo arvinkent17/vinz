@@ -85,22 +85,15 @@
 						<div class="table-responsive">
 							<table class="table table-striped table-condensed table-bordered table-hover">
 								<thead>
-									<th>#</th>
-									<th>Firstname</th>
-									<th>Middlename</th>
-									<th>Lastname</th>
-									<th>Email</th>
-									<th>Address</th>
-									<th>Contact No</th>
-									<th>Action</th>
-									</thead>
+							
+								</thead>
 								<tbody>
 								
 								<?php
 
 									if( isset($_POST['searchbutton2'])  ) {
 
-									$globalsearchtext = trim($_POST['searchprod']);
+										$globalsearchtext = trim($_POST['searchprod']);
 
 										if( !empty( $globalsearchtext ) ) {
 											$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
