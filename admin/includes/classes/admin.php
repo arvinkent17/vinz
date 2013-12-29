@@ -105,7 +105,7 @@
 		 * @param string $result, string $message
 		 * @throws notification if empty result
 		 */
-		public function retrieve_admins( $result, $message = "" ) {
+		public function retrieve_admins( $result, $message = "" , $rows = 0 ) {
 			
 			$output = "";
 
@@ -113,9 +113,9 @@
 			global $db;
 
 			if( $db->num_rows( $result ) == 0 ) {
-
-				echo "<td align=center colspan={$rows}><div class=\"alert alert-danger\">";
-				echo "<h4>{$message}</h4>";
+				
+				echo "<td align=center colspan={$rows}><div id=\"alertdanger2\" class=\"alert alert-danger\">";
+				echo "<h4 id=\"alertmessage1\">{$message}</h4>";
 				echo "</div></td>";
 
 			} else {
@@ -131,8 +131,8 @@
 					echo "<td>" . $row['admingender'] . "</td>";
 					echo "<td>0" . $row['admincontact'] . "</td>";
 					echo "<td>
-							  <a class=\"nav-text\" href=\"operation/edit.php?id=" . urlencode($row["admin_id"]) . "&name={$adminname}" . "\">Edit</a>
-						      <a class=\"nav-text\" href=\"operation/delete.php?id=" . urlencode($row["admin_id"]) . "&name={$adminname}" . "\">Delete</a>
+							  <a class=\"nav-text\" href=\"operations/edit.php?id=" . urlencode($row["admin_id"]) . "&name={$adminname}" . "\">Edit</a>
+						      <a class=\"nav-text\" href=\"operations/delete.php?id=" . urlencode($row["admin_id"]) . "&name={$adminname}" . "\">Delete</a>
 						  </td>";
 						
 					echo "</tr>";
@@ -140,6 +140,88 @@
 				}
 			}
 			
+		}
+
+		/**
+		 * Retrieve Data from Table User
+		 *
+		 * 
+		 * @access public
+		 * @param string $result, string $message
+		 * @throws notification if empty result
+		 */
+		public function retrieve_users( $result , $message = "", $rows = 0 ) {
+
+			$output = "";
+
+			global $paginate;
+			global $db;
+
+			if( $db->num_rows( $result ) == 0 ) {
+
+				echo "<td align=center colspan={$rows}><div id=\"alertdanger2\" class=\"alert alert-danger\">";
+				echo "<h4 id=\"alertmessage1\">{$message}</h4>";
+				echo "</div></td>";
+
+			} else {
+
+				$cnt = $paginate->offset() + 1;			
+
+				while ( $row = $db->fetch_row( $result ) ) {
+					$name = urlencode($row['fname']);
+					echo "<tr valign=center>";
+					echo "<td>{$cnt}</td>";	
+					echo "<td>" . ucfirst($row['fname']) . " " . ucfirst($row['lname']) . " " . ucfirst($row['mname']) . "</td>";
+					echo "<td>" . $row['email'] . "</td>";
+					echo "<td>". $row['addr'] . "</td>";
+					echo "<td>0" . $row['contact_no'] . "</td>";
+					echo "<td>" . $row['username'] . "</td>";
+					echo "<td>
+							  <a class=\"nav-text\" href=\"page/operations/update-user.php?id=" . urlencode($row["user_id"]) . "&name={$name}" . "\">Edit</a>
+						      <a class=\"nav-text\" href=\"page/operations/delete-user.php?id=" . urlencode($row["user_id"]) . "&name={$name}" . "\">Delete</a>
+						  </td>";
+						
+					echo "</tr>";
+					$cnt++;
+				}
+			}
+		}
+
+		public function search_user( $result , $message = "" ) {
+
+			$output = "";
+
+			global $paginate;
+			global $db;
+
+			if( $db->num_rows( $result ) == 0 ) {
+
+				echo "<td align=center colspan={$rows}><div class=\"alert-message error\">";
+				echo "<h4>{$message}</h4>";
+				echo "</div></td>";
+
+			} else {
+
+				$cnt = $paginate->offset() + 1;			
+
+				while ( $row = $db->fetch_row( $result ) ) {
+					$productname = urlencode($row['product_name']);
+					echo "<tr valign=center>";
+					echo "<td>{$cnt}</td>";	
+					echo "<td>" . ucfirst($row['fname']) . ucfirst($row['lname']) . ucfirst($row['mname']) . "</td>";
+					echo "<td>" . $row['email'] . "</td>";
+					echo "<td>" . $row['addr'] . "</td>";
+					echo "<td>0" . $row['contact_no'] . "</td>";
+					echo "<td>0" . $row['username'] . "</td>";
+					echo "<td>
+							  <a class=\"nav-text\" href=\"operations/edit.php?id=" . urlencode($row["user_id"]) . "&name={$productname}" . "\">Edit</a>
+						      <a class=\"nav-text\" href=\"operations/delete.php?id=" . urlencode($row["user_id"]) . "&name={$productname}" . "\">Delete</a>
+						  </td>";
+						
+					echo "</tr>";
+					$cnt++;
+				}
+			}
 		}
 
 	}
