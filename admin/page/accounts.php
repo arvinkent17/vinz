@@ -5,7 +5,7 @@
 	 */
 	require_once("../includes/functions/initialize.php");
 
-	if( !$admin_session->is_logged_in() ) { redirect_to("page/login.php"); }
+	if( !$admin_session->is_logged_in() ) { redirect_to("login.php"); }
 
 ?>
 <!DOCTYPE html>
@@ -53,7 +53,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown">Admin <?php echo ucfirst($_SESSION['username']); ?> <i class="fa fa-cogs fa-fw"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <?php echo ucfirst($_SESSION['username']); ?> <i class="fa fa-cogs fa-fw"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href=>View Profile <i class="fa fa-user fa-fw"></i></a></li>
 								<li><a href="logout.php">Logout <i class="fa fa-sign-out fa-fw"></i></a></li>
@@ -113,7 +113,9 @@
 
           									$rows = 7;
 
-          									$paginate->pagination_read( $class, $rows, "tbl_admininfo", $page, $per_page, $total_count, $message1 );
+          									$table = "tbl_admininfo";
+
+          									$paginate->pagination_read( $class, $rows, $table, $page, $per_page, $total_count, $message1 );
           								
           								?>
 										</tbody>
@@ -146,51 +148,82 @@
 						</div>
 					</div>
 				</div>
+				<!-- Admin Panel List End -->	
 				<div class="col-lg-3">
 					<div class="list-group">
 						<div class="list-group-item">
-							<h4  id="statishead" class="list-group-item-heading"><i class="fa fa-users fa-fw"></i> Account Statistics</h4>
-							<div id="statis" class="well">
-								<div class="pull-left">
-									<h5><i class="fa fa-group fa-fw"></i> <strong>Users : <?php echo $user->count(); ?></strong></h5>	
+							<div id="panel1" class="panel panel-primary">
+								<div class="panel-heading">
+              					<h4 class="list-group-item-heading panel-title"><i class="fa fa-users fa-fw"></i> Account Statistics</h4>
+           			   			</div>
+           			   			<div class="panel-body">
+	             					<div class="row">
+	             					<div id="statis"  class="well">
+	             						<div class="pull-left">
+		             						<h5><i class="fa fa-group fa-fw"></i> <strong>Users : <?php echo $user->count(); ?></strong></h5>		
+		             					</div>
+										<div class="pull-right">
+											<h5><i class="fa fa-user fa-fw"></i> <strong>Admins : <?php echo $admin->count(); ?></strong></h5>	
+										</div>	
+									</div>
+									</div>
 								</div>
-								<div class="pull-right">
-									<h5><i class="fa fa-user fa-fw"></i> <strong>Admins : <?php echo $admin->count(); ?></strong></h5>	
+           					</div>				
+						</div>
+						<div class="list-group-item">
+							<div id="panel2" class="panel panel-primary">
+								<div class="panel-heading">
+									<h4 class="list-group-item-heading panel-title"><i class="fa fa-money fa-fw"></i> Sales Statistics</h4>
+								</div>
+								<div class="panel-body">
+									<div class="row">		
+										<div id="statis3" class="well">
+											<div class="pull-left">
+												<h5><i class="fa fa-shopping-cart fa-fw"></i> <strong>Products Sold : <?php echo $products->sold_products(); ?></strong></h5>	
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 						<div class="list-group-item">
-							<h4  id="statishead" class="list-group-item-heading"><i class="fa fa-money fa-fw"></i> Sales Statistics</h4>
-							<div id="statis" class="well">
-								<div class="pull-left">
-									<h5><i class="fa fa-shopping-cart fa-fw"></i> <strong>Products Sold : <?php echo $products->sold_products(); ?></strong></h5>	
+							<div id="panel3" class="panel panel-primary">
+								<div class="panel-heading">
+									<h4 class="list-group-item-heading panel-title"><i class="fa fa-truck fa-fw"></i> Stocks</h4>
+								</div>
+								<div class="panel-body">
+									<div class="row">		
+										<div id="statis2" class="well">
+											<div class="pull-left">
+												<h5><i class="fa fa-star fa-fw"></i> <strong>Total Stocks : <?php echo $products->count_stocks(); ?></strong> <br /><br /> <strong><i class="fa fa-minus-square  fa-fw"></i> Remaining Stocks : <?php echo $products->remaining_stocks(); ?></strong></h5>										
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 						<div class="list-group-item">
-							<h4  id="statishead" class="list-group-item-heading"><i class="fa fa-truck fa-fw"></i> Stocks</h4>
-							<div id="statis2" class="well">
-								<div class="pull-left">
-									<h5><i class="fa fa-star fa-fw"></i> <strong>Total Stocks : <?php echo $products->count_stocks(); ?></strong> <br /><br /> <strong><i class="fa fa-minus-square  fa-fw"></i> Remaining Stocks : <?php echo $products->remaining_stocks(); ?></strong></h5>										
+							<div id="panel4" class="panel panel-primary">
+								<div class="panel-heading">
+									<h4 class="list-group-item-heading panel-title"><i class="fa fa-mail-forward fa-fw"></i> Feedbacks</h4>
 								</div>
-							</div>
-						</div>
-						<div class="list-group-item">
-							<h4  id="statishead" class="list-group-item-heading"><i class="fa fa-mail-forward fa-fw"></i> Feedbacks</h4>
-							<div id="statis" class="well">
-								<div class="input-group"> 
-									<span class="input-group-btn">
-										<center><button class="btn btn-info">Read Mails</button></center>
-									</span>
+								<div class="panel-body">
+									<div class="row">		
+										<div id="statis" class="well">
+											<div class="input-group"> 
+												<span class="input-group-btn">
+													<center><button class="btn btn-info">Read Mails</button></center>
+												</span>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>		
 		</div>
-		<!-- Admin Panel List End -->	
 
 		<!-- Search Customer Modal Form Starts Here -->
 		<div class="modal fade" id="searchcustommodal" role="dialog">
