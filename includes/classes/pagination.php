@@ -37,6 +37,7 @@
 			global $admin;
 			global $user;
 			global $products;
+			global $globalsearchtext;
 
 			$this->current_page = (int)$page;
 			$this->per_page = (int)$per_page;
@@ -44,31 +45,80 @@
 
 			if( $classname == $admin ) {
 
-				$query = "SELECT * FROM {$tablename} ";
-				$query .= "LIMIT {$per_page} ";
-				$query .= "OFFSET " . $this->offset();
+				$query = "SELECT * FROM {$tablename} AS admin "; 
+				$query .= "INNER JOIN tbl_admininfo AS admininfo ";
+				$query .= "ON(admin.`admin_id`=admininfo.`admin_id`)";
 				$result = $db->exe_query( $query );
+
 				$admin->retrieve_admins( $result, $message, $rows );
 
 			} elseif( $classname == $user ) {
 
-				$query = "SELECT * FROM {$tablename} ";
-				$query .= "LIMIT {$per_page} ";
-				$query .= "OFFSET " . $this->offset();
+				$query = "SELECT * FROM {$tablename} AS userinfo ";
+				$query .= "INNER JOIN tbl_users AS users ";
+				$query .= "ON(userinfo.`user_id`=users.`user_id`)";
 				$result = $db->exe_query( $query );
-				$db->retrieve_rows( $result, $message , $rows);
+
+				$user->retrieve_users( $result, $message , $rows);
 
 			} elseif( $classname == $products) {
 
 				$query = "SELECT * FROM {$tablename} AS product ";
-				$query .="INNER JOIN tbl_stocks AS stocks ";
-			    $query .="ON(product.`product_id`=stocks.`product_id`) ";
+				$query .= "INNER JOIN tbl_stocks AS stocks ";
+			    $query .= "ON(product.`product_id`=stocks.`product_id`) ";
 				$query .= "INNER JOIN tbl_supplier AS supplier ";
 				$query .= "ON(stocks.`supplier_id`=supplier.`supplier_id`)";
 				$query .= "LIMIT {$per_page} ";
 				$query .= "OFFSET " . $this->offset();
- 				$result = $db->exe_query($query);
+ 				$result = $db->exe_query( $query );
  				$products->retrieve_products( $result, $message, $rows );
+
+ 			} elseif( $classname == "SearchProduct" ) {
+
+ 				$query = "SELECT * FROM {$tablename} AS product "; 
+				$query .= "INNER JOIN tbl_stocks AS stocks ";
+				$query .= "ON(product.`product_id`=stocks.`product_id`) ";
+				$query .= "INNER JOIN tbl_supplier AS supplier ";
+				$query .= "ON(stocks.`supplier_id`=supplier.`supplier_id`) ";
+				$query .= "WHERE product_name LIKE '%{$globalsearchtext}%'";
+				$result = $db->exe_query( $query );
+				
+				if( $db->num_rows( $result ) >= 1 ) {
+
+					$products->search_product( $result, $message, $rows );
+
+				} elseif( $db->num_rows( $result ) == 0 ) {
+
+					$modalname = "#searchproductmodal";
+					$message = "Sorry. There is no such thing as \"{$globalsearchtext}\" in your List of Products. ";
+
+					echo output_messagev3( $message, $modalname );
+
+				} 	
+
+			} elseif( $classname == "SearchCustomer" ) {
+				
+				$query = "SELECT * FROM {$tablename} AS userinfo "; 
+				$query .= "INNER JOIN tbl_users AS users ";
+				$query .= "ON(users.`user_id`=userinfo.`user_id`) ";
+				$query .= "WHERE fname LIKE '%{$globalsearchtext}%' ";
+				$query .= "OR mname LIKE '%{$globalsearchtext}%' ";
+				$query .= "OR lname LIKE '%{$globalsearchtext}%' ";
+				$query .= "OR username LIKE '%{$globalsearchtext}%'"; 
+				$result = $db->exe_query($query);
+
+				if( $db->num_rows( $result ) >= 1 ) {
+
+					$user->search_user( $result, $message, $rows );
+
+				} elseif( $db->num_rows( $result ) == 0 ) {
+
+					$modalname = "#searchcustommodal";
+					$message = "Sorry. \"{$globalsearchtext}\" is not registered on your Site. ";
+
+					echo output_messagev3( $message, $modalname );
+
+				}
 
 			} else {
 
