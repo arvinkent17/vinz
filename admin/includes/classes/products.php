@@ -58,7 +58,7 @@
 		 * @access public
 		 * @throws notification if empty result
 		 */
-		public function retrieve_products( $result, $message = "" ) {
+		public function retrieve_products( $result, $message = "", $rows = 0 ) {
 			
 			$output = "";
 
@@ -67,8 +67,8 @@
 
 			if( $db->num_rows( $result ) == 0 ) {
 
-				echo "<td align=center colspan={$rows}><div class=\"alert-message error\">";
-				echo "<h4>{$message}</h4>";
+				echo "<td align=center colspan={$rows}><div id=\"alertdanger2\" class=\"alert alert-danger\">";
+				echo "<h4 id=\"alertmessage1\">{$message}</h4>";
 				echo "</div></td>";
 
 			} else {
@@ -118,7 +118,7 @@
 					echo "<tr valign=center>";
 					echo "<td>{$cnt}</td>";	
 					echo "<td>" . $row['product_name'] . "</td>";
-					echo "<td><textarea class=\"form-control\" rows=\"1\">" . $row['desc'] . "</textarea></td>";
+					echo "<td>" . $row['desc'] . "</td>";
 					echo "<td>" . $row['price'] . "</td>";
 					echo "<td>" . $row['quantity'] . "</td>";
 					echo "<td>" . $row['supplier_name'] . "</td>";
