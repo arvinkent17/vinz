@@ -9,7 +9,7 @@ $(function() {
 
 	// Notification Close Function.
 	$("#closex").on('click', function() {
-		$(".alert-message").fadeOut('fast');
+		$(".alert").fadeOut('fast');
 	});
 
 	// Carousel Auto Slide. 
