@@ -21,11 +21,12 @@
          */
 		private $logged_in;
 		/**
-         * Admin ID.
+         * Admin ID and Username.
          *  
          * @access public
          */
 		public $admin_id;
+		public $username;
 
 		 /**
           * Automatically Execute Method Calls and Other Functions.
@@ -54,7 +55,7 @@
 		public function login( $admin ) {
 			if( $admin ) {
 				$this->admin_id = $_SESSION['admin_id'] = $admin->id;
-				$this->admin_id = $_SESSION['username'] = $admin->username;
+				$this->username = $_SESSION['username'] = $admin->username;
 				$this->logged_in = true;
 			}
 		}
