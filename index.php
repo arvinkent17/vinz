@@ -5,6 +5,53 @@
 	 */
 	require_once("includes/functions/initialize.php");
 
+	if( $user_session->is_logged_in() ) { redirect_to("user/index.php"); } 
+
+	if( isset( $_POST['login'] ) ) {
+
+		$username = $_POST['luname'];
+		$password = $_POST['lpword'];
+
+		$found_user = $user->authenticate( $username, $password );
+
+		if( $found_user ) {
+
+			$user_session->login( $found_user );
+			redirect_to( "user/index.php" );
+			echo "boom";
+
+		} else {
+
+			$err_message = "incorrect username or password.";
+
+			echo "boom2";
+
+		}
+
+	} elseif( isset( $_POST['signup'] ) ) {
+		
+		$uname = $_POST['uname'] ;
+
+		$pword = $_POST['pword'] ;
+
+		$hashed_pword = sha1( $pword );
+		
+		$required_fields = array( 'uname' => $uname, 'pword' => $hashed_pword );
+	
+		$table = "tbl_users";
+
+		$crud->create( $table, $required_fields );
+
+		redirect_to( "page/set-up-profile.php" );
+
+	} else {
+
+		$username = "";
+		$password = "";
+		$uname = "";
+		$pword = "";
+	}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -200,7 +247,7 @@
 		<div class="modal fade" id="loginmodal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form class="form-horizontal">
+					<form method="post" class="form-horizontal">
 						<div class="modal-header">
 							<h4>Login Authentication<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
@@ -208,21 +255,21 @@
 							<div class="form-group">
 								<label for="username" class="col-lg-2 control-label">Username</label>
 								<div class="col-lg-10">
-									<input type="text" class="form-control" id="username" placeholder="Email Address or Username">
+									<input type="text" class="form-control" name="luname" id="username" value="<?php echo htmlentities($username); ?>" placeholder="Email Address or Username" required>
 								</div>
 							</div>	
 							<div class="form-group">
 								<label for="password" class="col-lg-2 control-label">Password</label>
 								<div class="col-lg-10">
-									<input type="password" class="form-control" id="password" placeholder="Password">
+									<input type="password" class="form-control" name="lpword" id="password" value="<?php echo htmlentities($username); ?>" placeholder="Password" required>
 								</div>
 							</div>		
 						</div>
 						<div class="modal-footer">
 							<div class="pull-left">
-								<a href="#registrationmodal" data-toggle="modal" data-dismiss="modal" class="btn btn-info">Not a User Yet?</a>
+								<a href="page/recover-account.php" class="btn btn-info">Forgot Password?</a>
 							</div>
-							<button class="btn btn-primary" type="submit">Login</button>
+							<button class="btn btn-primary" name="login" type="submit">Login</button>
 							<a class="btn btn-default" data-dismiss="modal">Cancel</a>
 						</div>
 					</form>
@@ -262,52 +309,25 @@
 		<div class="modal fade" id="registrationmodal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form class="form-horizontal">
+					<form class="form-horizontal" method="post">
 						<div class="modal-header">
 							<h4>Registration Form<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
-								<label for="firstname" class="col-lg-2 control-label">Firstname:</label>
+								<label for="firstname" class="col-lg-2 control-label">Username:</label>
 								<div class="col-lg-10">
-									<input type="text" class="form-control" id="firstname" placeholder="Your Firstname">
-								</div>
-							</div>	
-							<div class="form-group">
-								<label for="middlename" class="col-lg-2 control-label">Middlename:</label>
-								<div class="col-lg-10">
-									<input type="text" class="form-control" id="middlename" placeholder="Your Middlename">
-								</div>
-							</div>	
-							<div class="form-group">
-								<label for="lastname" class="col-lg-2 control-label">Lastname:</label>
-								<div class="col-lg-10">
-									<input type="text" class="form-control" id="lastname" placeholder="Your Lastname">
+									<input type="text" class="form-control" name="uname" id="username" value="<?php echo htmlentities( $uname ); ?>" placeholder="Your Desired Username" required>
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="email2" class="col-lg-2 control-label">Email:</label>
+								<label for="firstname" class="col-lg-2 control-label">Password:</label>
 								<div class="col-lg-10">
-									<input type="email" class="form-control" id="email2" placeholder="Your Email Address">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="addr" class="col-lg-2 control-label">Address:</label>
-								<div class="col-lg-10">
-									<textarea class="form-control" rows="6">
-										
-									</textarea>
+									<input type="password" class="form-control" name="pword" id="password" value="<?php echo htmlentities( $pword ); ?>" placeholder="Your Desired Password" required>
 								</div>
 							</div>	
-							<div class="form-group">
-								<label for="cont" class="col-lg-2 control-label">Phone #:</label>
-								<div class="col-lg-10">
-									<input type="text" class="form-control" id="cont" placeholder="Your Cellphone Number">
-								</div>
-							</div>			
-						</div>
 						<div class="modal-footer">
-							<button class="btn btn-primary" type="submit">Submit</button>
+							<button class="btn btn-primary" name="signup" type="submit">Submit</button>
 							<a class="btn btn-default" data-dismiss="modal">Cancel</a>
 						</div>
 					</form>
