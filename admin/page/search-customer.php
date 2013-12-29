@@ -85,14 +85,7 @@
 						<div class="table-responsive">
 							<table class="table table-striped table-condensed table-bordered table-hover">
 								<thead>
-									<th>#</th>
-									<th>Firstname</th>
-									<th>Middlename</th>
-									<th>Lastname</th>
-									<th>Email</th>
-									<th>Address</th>
-									<th>Contact No</th>
-									<th>Action</th>
+								
 								</thead>
 								<tbody>
 								
@@ -100,7 +93,7 @@
 
 									if( isset($_POST['searchbutton'])  ) {
 
-									$globalsearchtext = trim($_POST['searchcustom']);
+										$globalsearchtext = trim($_POST['searchcustom']);
 
 										if( !empty( $globalsearchtext ) ) {
 											$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -208,7 +201,7 @@
 		<div class="modal fade" id="searchcustommodal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="search-customer.php" class="form-horizontal">
+					<form action="search-customer.php" method="post" class="form-horizontal">
 						<div class="modal-header">
 							<h4 id="search-title">Search Customer<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
@@ -218,9 +211,9 @@
 									<span class="input-group-addon">
 										<img src="../../img/search-icon.png" height="20" class="responsive">
 									</span>
-									<input type="text" id="search-text" class="form-control" placeholder="Search Customer" required>
+									<input type="text" id="search-text" name="searchcustom" class="form-control" placeholder="Search Customer" required>
 									<span class="input-group-btn">
-										<button class="btn btn-primary">Search</button>
+										<input type="submit" name="searchbutton" class="btn btn-primary" value="Search">
 									</span>
 								</div>
 							</div>	
@@ -235,7 +228,7 @@
 		<div class="modal fade" id="searchproductmodal" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
-					<form action="search-product.php" class="form-horizontal">
+					<form action="search-product.php" method="post" class="form-horizontal">
 						<div class="modal-header">
 							<h4 id="search-title">Search Product<a class="nav-text pull-right close-mark" data-dismiss="modal"><button type="button" class="close" aria-hidden="true">&times;</button></a></h4>
 						</div>
@@ -245,9 +238,9 @@
 									<span class="input-group-addon">
 										<img src="../../img/search-icon.png" height="20" class="responsive">
 									</span>
-									<input type="text" id="search-text" class="form-control" placeholder="Search Product" required>
+									<input type="text" id="search-text" name="searchprod" class="form-control" placeholder="Search Product" required>
 									<span class="input-group-btn">
-										<button class="btn btn-primary">Search</button>
+										<input type="submit" name="searchbutton2" class="btn btn-primary" value="Search">
 									</span>
 								</div>
 							</div>	
