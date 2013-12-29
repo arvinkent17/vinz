@@ -2,7 +2,7 @@
 	/**
      * This File Contains Operations Class.
      * 
-     * This is my Own MVC CRUD operations.
+     * This is my Own MVC CRUD operations but it is only Usable if only 1 table is being Query.
      *
      * @author Arvin Kent Lazaga <arvinkent17@gmail.com>
      * @copyright Arvin Kent Lazaga December 26, 2013
@@ -72,25 +72,26 @@
 		 * @param array $post_val
 		 * @access public
 		 */
-		public function create( $tablename = "", $post_val ) {				
+		public function create( $tablename = "", $required_array ) {				
 			
 			global $db;
 
 			$arr = array();
 
-			foreach( $post_val as $key => $value ) {
+			foreach( $required_array as $fields_array => $value ) {
 				$arr[] = $value;
 			}
 
 			$require_fields = $arr;
 
 			$countfields = "SELECT * FROM " . $tablename;
-			$result = $db->exe_query($countfields, $db->connection);
+
+			$result = $db->exe_query($countfields);
 
 			$field_arr = array();
 
 			foreach( $require_fields as $fieldnames ) {
-				$field_arr[] = $db->escape_value($fieldnames);
+				$field_arr[] = trim( $db->escape_value( $fieldnames ) );
 			}
 
 			$get_required_fields = "'" . implode( "','", $field_arr ) . "'";
@@ -105,7 +106,9 @@
 
 			$query = "INSERT INTO {$tablename} ({$get_field_names})
 					  VALUES ({$get_required_fields})";
-			$result2 = $db->exe_query($query, $db->connection);						
+			$result2 = $db->exe_query($query);			
+
+
 		}
 
 		/**
@@ -131,7 +134,7 @@
 			$require_fields = $arr;
 
 			$countfields = "SELECT * FROM " . $tablename;
-			$result = $db->exe_query( $countfields, $db->connection );
+			$result = $db->exe_query( $countfields );
 
 			$field_arr = array();
 
@@ -167,7 +170,7 @@
 			$query = "UPDATE " . $tablename . " ";
 			$query .= "SET " . $newdn_fields . " ";
 			$query .= "WHERE " . $f_array2[0] . " = " . $id;
-			$result2 = $db->exe_query( $query, $db->connection);
+			$result2 = $db->exe_query( $query );
 			
 		}
 
@@ -183,7 +186,7 @@
 			global $db;
 
 			$query = "DELETE FROM " . $tablename;
-			$result = $db->exe_query( $query, $db->$connection );
+			$result = $db->exe_query( $query );
 
 		}
 
@@ -212,7 +215,7 @@
 			$query = "DELETE FROM " . $tablename . " ";
 			$query .= "WHERE " . $f_array[0] . " = " . $id . " ";
 			$query .= "LIMIT 1";
-			$result2 = $db->exe_query( $query, $db->connection );
+			$result2 = $db->exe_query( $query );
 		}
 	}
 
