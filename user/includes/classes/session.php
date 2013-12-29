@@ -1,4 +1,11 @@
 <?php
+	/**
+     * This File Contains User Session Class.
+     * 
+     * @author Arvin Kent Lazaga <arvinkent17@gmail.com>
+     * @copyright Arvin Kent Lazaga December 27, 2013
+     * @since December 27, 2013
+	 */
 	class UserSession {
 
 		/**
