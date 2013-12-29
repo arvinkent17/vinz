@@ -57,9 +57,10 @@
 				$query = "SELECT * FROM {$tablename} AS userinfo ";
 				$query .= "INNER JOIN tbl_users AS users ";
 				$query .= "ON(userinfo.`user_id`=users.`user_id`)";
+				
 				$result = $db->exe_query( $query );
 
-				$user->retrieve_users( $result, $message , $rows);
+				$admin->retrieve_users( $result, $message , $rows);
 
 			} elseif( $classname == $products) {
 
@@ -109,7 +110,7 @@
 
 				if( $db->num_rows( $result ) >= 1 ) {
 
-					$user->search_user( $result, $message, $rows );
+					$admin->search_user( $result, $message, $rows );
 
 				} elseif( $db->num_rows( $result ) == 0 ) {
 
