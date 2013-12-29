@@ -5,6 +5,8 @@
 	 */
 	require_once("../includes/functions/initialize.php");
 
+	if( $user_session->is_logged_in() ) { redirect_to("user/index.php"); } 
+	
 ?>
 <!DOCTYPE html>
 <html>
