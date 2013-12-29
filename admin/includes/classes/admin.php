@@ -7,7 +7,7 @@
      * @copyright Arvin Kent Lazaga December 24, 2013
      * @since December 24, 2013
 	 */
-
+		
 	/**
 	 * Admin Object Class
 	 * 
@@ -40,7 +40,7 @@
 		 */
 		public function count() {
 			global $db;
-			$result =  $db->exe_query( "SELECT * FROM tbl_admin" );
+			$result =  $db->exe_query( "SELECT * FROM tbl_admininfo" );
 			$count = $db->num_rows( $result );
 			return $count;
 		}
@@ -114,7 +114,7 @@
 
 			if( $db->num_rows( $result ) == 0 ) {
 
-				echo "<td align=center colspan={$rows}><div class=\"alert-message error\">";
+				echo "<td align=center colspan={$rows}><div class=\"alert alert-danger\">";
 				echo "<h4>{$message}</h4>";
 				echo "</div></td>";
 
@@ -129,10 +129,10 @@
 					echo "<td>" . $row['adminname'] . "</td>";
 					echo "<td>" . $row['adminage'] . "</td>";
 					echo "<td>" . $row['admingender'] . "</td>";
-					echo "<td>" . $row['admincontact'] . "</td>";
+					echo "<td>0" . $row['admincontact'] . "</td>";
 					echo "<td>
-							  <a class=\"nav-text\" href=\"operations/edit.php?id=" . urlencode($row["admin_id"]) . "&name={$adminname}" . "\">Edit</a>
-						      <a class=\"nav-text\" href=\"operations/delete.php?id=" . urlencode($row["admin_id"]) . "&name={$adminname}" . "\">Delete</a>
+							  <a class=\"nav-text\" href=\"operation/edit.php?id=" . urlencode($row["admin_id"]) . "&name={$adminname}" . "\">Edit</a>
+						      <a class=\"nav-text\" href=\"operation/delete.php?id=" . urlencode($row["admin_id"]) . "&name={$adminname}" . "\">Delete</a>
 						  </td>";
 						
 					echo "</tr>";
