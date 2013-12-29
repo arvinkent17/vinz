@@ -5,20 +5,20 @@
 	 */
 	require_once("../includes/functions/initialize.php");
 
-	if( $user_session->is_logged_in() ) { redirect_to("user/index.php"); } 
+	if( !$user_session->is_logged_in() ) { redirect_to("../../index.php"); } 
 	
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>E-Shopping | Search Product</title>
+		<title>E-Shopping | Contact Us</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="author" content="Arvin Kent Lazaga">
-		<link href="../css/bootstrap.min.css" rel="stylesheet">
-		<link href="../css/bootstrap-theme.min.css" rel="stylesheet">
-		<link href="../css/font-awesome.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="../css/main.css">
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="../../css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../../css/main.css">
 	</head>
 	<body>
 		<!-- Navigation Starts Here -->
@@ -46,29 +46,139 @@
 										<li><b>&rsaquo;</b> <a href="#">Category 5</a></li>
 									</ul>
 								</li>
-								<li class="active">
+								<li>
 									<a href="#searchmodal" data-toggle="modal" class="dropdown-toggle"><i class="fa fa-search fa-fw"></i> Search Product</a>
 								</li>
 							</ul>
 						</li>
 						<li><a href="about-us.php"><i class="fa fa-group fa-fw"></i> About Us</a></li>
-					 	<li><a href="contact-us.php"><i class="fa fa-phone fa-fw"></i> Contact Us</a></li>
+					 	<li class="active"><a href="contact-us.php"><i class="fa fa-phone fa-fw"></i> Contact Us</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">	
-						<li><a href="#registrationmodal" data-toggle="modal">Sign Up <i class="fa fa-question-circle fa-fw"></i></a></li>
-						<li><a href="#loginmodal" data-toggle="modal" >Login <i class="fa fa-sign-in fa-fw"></i></a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <?php echo ucfirst($_SESSION['username']); ?> <i class="fa fa-cogs fa-fw"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href=>View Profile <i class="fa fa-user fa-fw"></i></a></li>
+								<li><a href=>View Purchased Items<i class="fa fa-user fa-fw"></i></a></li>
+								<li><a href="page/logout.php">Logout <i class="fa fa-sign-out fa-fw"></i></a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		<!-- Navigation Ends Here -->
 
+		<!-- Breadcrumb Starts Here --> 
 		<div class="container">
 			<ul class="breadcrumb text-center">
 				<li><a href="../index.php" title="Go back to Homepage">Home</a></li>
-				<li class="active cur_p" title="Current Page">Search Product - Results</li>
+				<li class="active cur_p" title="Current Page">Contact Us</li>
 			</ul>
 		</div>
+		<!-- Breadcrumb Ends Here -->
+
+		<!-- Article About Us Starts Here -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="panel-header">
+								<h3><a href="../index.php" id="about-header">E-Shopping Website </a>| Contact Details</h3>
+							</div>
+							<br /> 
+							<h4>Name: Arvin Kent Sahid Lazaga</h4>
+							<h4>Email: arvinkent17@gmail.com</h4>
+							<h4>Company Name: No Name Yet</h4>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="list-group">
+						<div class="list-group-item">
+							<h4 class="list-group-item-heading">Total Registered User </h4>
+							<br />
+							<p>Currently there is no Registered User Yet</p>
+						</div>
+						<div class="list-group-item">
+							<h4 class="list-group-item-heading">Featured Products </h4>
+							<div id="myCarousel" class="carousel slide">
+					 			<ul class="carousel-indicators">
+					 			 	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					 			 	<li data-target="#myCarousel" data-slide-to="1"></li>
+					 			 	<li data-target="#myCarousel" data-slide-to="2"></li>
+					 			</ul>	
+					 			<div class="carousel-inner">
+					 				<div class="item active">
+					 			 		<img src="http://placehold.it/330x250" class="img-responsive">
+					 			 		<div class="carousel-caption">
+					 			 			 
+					 			 		</div>
+					 			 	</div>
+					 			 	<div class="item">
+					 			 		<img src="http://placehold.it/330x250" class="img-responsive">
+					 			 		<div class="carousel-caption">
+					 			 		</div>
+					 			 	</div>
+					 			 	<div class="item">
+					 			 		<img src="http://placehold.it/330x250" class="img-responsive">
+					 			 		<div class="carousel-caption">
+					 			 			 
+					 			 		</div>
+					 			 	</div>
+					 			 </div>	
+					 			<a class="carousel-control left" href="#myCarousel" data-slide="prev">
+					 				<span class="icon-prev"></span>
+					 			</a>
+					 			<a class="carousel-control right" href="#myCarousel" data-slide="next">
+					 			 	<span class="icon-next"></span>
+					 			</a>	
+				 			</div>		
+						</div>
+						<div class="list-group-item">
+							<h4 class="list-group-item-heading">Social Media </h4>
+							<br />
+							<table class="table-condensed" align="center">
+								<tbody>
+									<tr>
+										<td>
+											<a href="#"><img src="../img/facebook.png" class="img-responsive"></a>
+										</td>
+										<td>&nbsp;</td>
+										<td>
+											<a href="#"><img src="../img/googleplus.png" class="img-responsive"></a>
+										</td>
+										<td>&nbsp;</td>
+										<td>
+											<a href="#"><img src="../img/twitter.png" class="img-responsive"></a>
+										</td>
+									</tr>
+									<tr>
+										<td align="center">
+											 <b>Like Us</b>
+										</td>
+										<td>
+											&nbsp;
+										</td>
+										<td align="center">
+											 <b>+ Us</b>
+										</td>
+										<td>
+											&nbsp;
+										</td>
+										<td align="center">
+											 <b>Tweet Us</b>
+										</td>
+									</tr>
+								</tbody>
+							</table>						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Article Abous Us Ends Here -->
 
 		<!-- Sub Footer Starts Here -->
 		<div class="container">
@@ -278,9 +388,9 @@
 		<!-- Registration Modal Form Ends Here -->
 
 		<!-- load Javascript External Files here for Fast Load -->
-		<script src="../js/lib/jquery-1.8.2.min.js"></script>
-		<script src="../js/lib/bootstrap.min.js"></script>
-		<script src="../js/ajax-scripts.js"></script>
+		<script src="../../js/lib/jquery-1.8.2.min.js"></script>
+		<script src="../../js/lib/bootstrap.min.js"></script>
+		<script src="../../js/ajax-scripts.js"></script>
 
 	</body>
 </html>
