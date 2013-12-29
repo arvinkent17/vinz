@@ -19,19 +19,27 @@
 	defined("PPATH1") ? NULL : define("PPATH1", SITE_ROOT.DS."includes".DS."classes");
 	defined("PPATH2") ? NULL : define("PPATH2", SITE_ROOT.DS."includes".DS."functions");
 	defined("PPATH3") ? NULL : define("PPATH3", SITE_ROOT.DS."includes".DS."layouts");
+	defined("UPATH1") ? NULL : define("UPATH1", SITE_ROOT.DS."user".DS."includes".DS."classes");
 
 	/**
 	 * @global require_once load functions.php file  
 	 */
 	require_once(PPATH2.DS."functions.php");
 	/**
+	 * @global require_once load user-session.php file  
+	 */
+	require_once(UPATH1.DS."session.php");  
+	/**
 	 * @global require_once load database.php file  
 	 */
 	require_once(PPATH1.DS."database.php"); 
 	/**
+	 * @global require_once load user-session.php file  
+	 */
+	require_once(UPATH1.DS."user.php");  
+	/**
 	 * @global require_once load database.php file  
 	 */
 	require_once(PPATH1.DS."crud.php");
-
-
+	
 ?>
